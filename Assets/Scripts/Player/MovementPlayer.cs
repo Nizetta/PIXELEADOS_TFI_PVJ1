@@ -66,7 +66,7 @@ public class MovementPlayer : MonoBehaviour
             animator.SetBool("suelo", isGrounded);
         }
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded )
         {
             if (animator != null)
             {
@@ -76,6 +76,7 @@ public class MovementPlayer : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
     }
+
     private void CheckGround()
     {
         float offsetY = col != null ? col.bounds.extents.y + 0.02f : 0.5f;
@@ -83,9 +84,19 @@ public class MovementPlayer : MonoBehaviour
         int layerMask = groundLayer.value == 0 ? ~0 : groundLayer.value;
         RaycastHit2D hit = Physics2D.Raycast(origen, Vector2.down, distanciaRaycast, layerMask);
         isGrounded = hit.collider != null && hit.collider != col;
-
         Color colorRay = isGrounded ? Color.green : Color.red;
         Debug.DrawRay(origen, Vector2.down * distanciaRaycast, colorRay);
+        
+    }
+    void OnDrawGizmos()
+    {
+        if (col != null)
+        {
+            float offsetY = col.bounds.extents.y + 0.02f;
+            Vector2 origen = (Vector2)transform.position + Vector2.down * offsetY;
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawLine(origen, origen + Vector2.down * distanciaRaycast);
+        }
     }
 
     private void CheckFlip()
