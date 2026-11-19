@@ -1,6 +1,7 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
-using System.Collections;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -23,6 +24,14 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip[] hitClip;
     [SerializeField] private AudioClip[] playerHurtClip;
 
+    [Header("Volume Control Fade In-Out")]
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private string musicParam = "Music";
+    [SerializeField] private float musicFadeDuration = 1.5f;
+    [SerializeField] private float mutedOrLowDb = -25f;
+    [SerializeField] private float normalDb = 0f;
+
+    public Coroutine changeMusicVolume { get; private set; }
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -148,5 +157,49 @@ public class AudioManager : MonoBehaviour
     public void PlayPlayerHurt(Transform spawnTransform, float volume = 1f)
     {
         PlayRandomSFX(playerHurtClip, spawnTransform, volume);
+    }
+
+
+    //-- Fade in-out --
+    public void FadeMusicIn() // De bajo a normal
+    {
+        FadeMusicEffect(normalDb);
+    }
+
+    public void FadeMusicOut() // De normal a bajo
+    {
+        FadeMusicEffect(mutedOrLowDb);
+    }
+
+    private void FadeMusicEffect(float targetDb)
+    {
+        if (audioMixer == null) return;
+
+        if (changeMusicVolume != null)
+        {
+            StopCoroutine(changeMusicVolume);
+        }
+        changeMusicVolume = StartCoroutine(ChangeMusicDb(targetDb));
+    }
+
+    private IEnumerator ChangeMusicDb(float targetDb)
+    {
+        if (!audioMixer.GetFloat(musicParam, out float startDb))
+        {
+            startDb = normalDb;
+        }
+
+        float elapsedTime = 0f;
+        while (elapsedTime < musicFadeDuration)
+        {
+            elapsedTime += Time.unscaledDeltaTime;
+            float t = Mathf.Clamp01(elapsedTime / musicFadeDuration);
+            float currentDb = Mathf.Lerp(startDb, targetDb, t);
+            audioMixer.SetFloat(musicParam, currentDb);
+            yield return null;
+        }
+
+        audioMixer.SetFloat(musicParam, targetDb);
+        changeMusicVolume = null;
     }
 }

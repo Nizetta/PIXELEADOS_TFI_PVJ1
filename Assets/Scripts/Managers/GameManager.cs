@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = (State == GameState.Paused || State == GameState.Victory || State == GameState.GameOver ) ? 0f : 1f;
 
-        Debug.Log("[GameManager] Nuevo estado: {State}");
+        Debug.Log($"[GameManager] Nuevo estado: {State}");
         OnStateChanged?.Invoke(State);
     }
 
@@ -246,6 +246,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator FadeAndLoadScene(string sceneName)
     {
+        AudioManager.Instance?.FadeMusicOut();
         GetSceneTransition().FadeOut();
         yield return GetSceneTransition().changeAlpha; // Espera a que termine el fade out
         LoadScene(sceneName);

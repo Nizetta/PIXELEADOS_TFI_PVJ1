@@ -6,6 +6,14 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    //Para PlayerPrefs
+    private const string MasterVolKey = "MasterVolume";
+    private const string MusicVolKey = "MusicVolume";
+    private const string SfxVolKey = "SFXVolume";
+    private const string QualityKey = "QualityLevel";
+
+    private bool isLoadingSettings;
+
     [Header("Panels")]
     [SerializeField] private GameObject mainMenuPanel;   
     [SerializeField] private GameObject pausePanel;
@@ -15,6 +23,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject creditsPanel;
 
     private GameObject[] AllPanels => new[] { mainMenuPanel, pausePanel, victoryPanel, gameOverPanel, settingsPanel, creditsPanel };
+    
+    [Header("UI Controls (Opcional para sincronizar visuales)")]
+    [SerializeField] private Slider masterSlider;
+    [SerializeField] private Slider musicSlider;
+    [SerializeField] private Slider sfxSlider;
+    [SerializeField] private TMP_Dropdown qualityDropdown;
+    //[SerializeField] private TMP_Dropdown resolutionDropdown;
 
     [Header("HUD Elements")]
     [SerializeField] private TextMeshProUGUI scoreText;
@@ -22,7 +37,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Audio-Settings")]
     [SerializeField] private AudioMixer mainAudioMixer;
-    [SerializeField] private TMP_Dropdown resolutionDropdown;
+
 
     //[Header("Player Reference")]
     //[SerializeField] private HealthSystem healthSystemPlayer;
@@ -99,7 +114,32 @@ public class UIManager : MonoBehaviour
 
         SetupResolutions();
         */
+        LoadSettings();
+    }
 
+    public void LoadSettings()
+    {
+        isLoadingSettings = true;
+
+        // Lee valores guardados
+        float masterVal = PlayerPrefs.GetFloat(MasterVolKey, 0.8f);
+        float musicVal = PlayerPrefs.GetFloat(MusicVolKey, 0.8f);
+        float sfxVal = PlayerPrefs.GetFloat(SfxVolKey, 0.8f);
+        int qualityIdx = PlayerPrefs.GetInt(QualityKey, QualitySettings.GetQualityLevel());
+        
+        // Aplicar al sistema (AudioMixer / QualitySettings)
+        SetMasterVolume(masterVal);
+        SetMusicVolume(musicVal);
+        SetSFXVolume(sfxVal);
+        SetQuality(qualityIdx);
+
+        // Sincronizar sliders y dropdown sin re-guardar mientras cargamos
+        if (masterSlider != null) masterSlider.SetValueWithoutNotify(masterVal);
+        if (musicSlider != null) musicSlider.SetValueWithoutNotify(musicVal);
+        if (sfxSlider != null) sfxSlider.SetValueWithoutNotify(sfxVal);
+        if (qualityDropdown != null) qualityDropdown.SetValueWithoutNotify(qualityIdx);
+
+        isLoadingSettings = false;
     }
 
     private void PlayButtonClickSound()
@@ -196,6 +236,11 @@ public class UIManager : MonoBehaviour
         {
             mainAudioMixer.SetFloat("MasterVolume", Mathf.Log10(sliderValue)*20);
         }
+        if (!isLoadingSettings)
+        {
+            PlayerPrefs.SetFloat(MasterVolKey, sliderValue);
+            PlayerPrefs.Save();
+        }
     }
 
     public void SetSFXVolume(float sliderValue)
@@ -204,6 +249,12 @@ public class UIManager : MonoBehaviour
         {
             mainAudioMixer.SetFloat("SFX", Mathf.Log10(sliderValue) * 20);
         }
+        if (!isLoadingSettings)
+        {
+            PlayerPrefs.SetFloat(SfxVolKey, sliderValue);
+            PlayerPrefs.Save();
+        }
+
     }
 
     public void SetMusicVolume(float sliderValue)
@@ -212,16 +263,28 @@ public class UIManager : MonoBehaviour
         {
             mainAudioMixer.SetFloat("Music", Mathf.Log10(sliderValue) * 20);
         }
+        if (!isLoadingSettings)
+        {
+            PlayerPrefs.SetFloat(MusicVolKey, sliderValue);
+            PlayerPrefs.Save();
+        }
+
     }
 
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
+        if (!isLoadingSettings)
+        {
+            PlayerPrefs.SetInt(QualityKey, qualityIndex);
+            PlayerPrefs.Save();
+        }
     }
 
     public void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
+
     }
 
     /*private void SetupResolutions()
