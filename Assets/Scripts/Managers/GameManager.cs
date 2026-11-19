@@ -28,11 +28,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Scene Configurattion")]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
-    [SerializeField] private string victorySceneName = "Victory";
-    [SerializeField] private string gameOverSceneName = "GameOver";
     [SerializeField] private string[] levelSceneName;
 
-    //-- Eventos para desacoplar la UI ---
+    //-- Eventos para desacoplar ---
     public event Action<GameState> OnStateChanged;
     public event Action<int> OnScoreChanged;
     public event Action<int, int> OnHealthChanged;
@@ -69,7 +67,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        ChangeState(SceneManager.GetActiveScene());
+        ApplySceneState(SceneManager.GetActiveScene());
     }
     private void Update()
     {
@@ -80,31 +78,26 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
-            Paused();
+            if (State == GameState.Playing || State == GameState.Paused)
+            {
+                Paused();
+            }
         }
     }
 
     // ---------- ESTADO SEGÚN LA ESCENA ----------
     private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        ChangeState(scene);
+        ApplySceneState(scene);
     }
 
-    private void ChangeState(Scene scene)
+    private void ApplySceneState(Scene scene)
     {
         string sceneName = scene.name;
 
         if (sceneName == mainMenuSceneName)
         {
             SetState(GameState.Start);
-        }
-        else if (sceneName == victorySceneName)
-        {
-            SetState(GameState.Victory);
-        }
-        else if (sceneName == gameOverSceneName)
-        {
-            SetState(GameState.GameOver);
         }
         else
         {
@@ -118,7 +111,7 @@ public class GameManager : MonoBehaviour
         if (State == newState) return;
         State = newState;
 
-        Time.timeScale = (State == GameState.Paused) ? 0f : 1f;
+        Time.timeScale = (State == GameState.Paused || State == GameState.Victory || State == GameState.GameOver ) ? 0f : 1f;
 
         Debug.Log("[GameManager] Nuevo estado: {State}");
         OnStateChanged?.Invoke(State);
@@ -145,6 +138,14 @@ public class GameManager : MonoBehaviour
     {
         BeginSession();
         StartCoroutine(FadeAndLoadScene(firstLevelName));
+    }
+
+    public void RestartCurrentLevel()
+    {
+        BeginSession();
+        Time.timeScale = 1f;
+        string currentScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentScene);
     }
 
     public void LoadMainMenu()
@@ -185,14 +186,12 @@ public class GameManager : MonoBehaviour
     {
         if (State != GameState.Playing) return;
         SetState(GameState.Victory);
-        StartCoroutine(FadeAndLoadScene(victorySceneName));
     }
 
     public void Lose()
     {
         if (State != GameState.Playing) return;
         SetState(GameState.GameOver);
-        StartCoroutine(FadeAndLoadScene(gameOverSceneName));
     }
 
     public void NotifyPlayerDead()

@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -29,16 +27,69 @@ public class UIManager : MonoBehaviour
     //[Header("Player Reference")]
     //[SerializeField] private HealthSystem healthSystemPlayer;
 
+    [Header("Auto Button Click Sound")]
+    [SerializeField] private bool autoHookButtonSounds = true;
     private Resolution[] resolutions;
-    void Start()
+    private Button[] sceneButtons;
+
+    private void Awake()
+    {
+        if (autoHookButtonSounds)
+        {
+            sceneButtons = GetComponentsInChildren<Button>(true);
+        }
+    }
+
+    private void OnEnable()
     {
         if (GameManager.Instance != null)
         {
             GameManager.Instance.OnStateChanged += HandleStateChanged;
+            GameManager.Instance.OnScoreChanged += UpdateScoreHUD;
+        }
+
+        if (sceneButtons != null)
+        {
+            foreach (Button btn in sceneButtons)
+            {
+                if (btn != null)
+                {
+                    btn.onClick.AddListener(PlayButtonClickSound);
+                }
+            }
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnStateChanged -= HandleStateChanged;
             GameManager.Instance.OnScoreChanged -= UpdateScoreHUD;
+        }
+
+        if (sceneButtons != null)
+        {
+            foreach (Button btn in sceneButtons)
+            {
+                if (btn != null)
+                {
+                    btn.onClick.RemoveListener(PlayButtonClickSound);
+                }
+            }
+        }
+    }
+    void Start()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnStateChanged -= HandleStateChanged;
+            GameManager.Instance.OnStateChanged += HandleStateChanged;
+            GameManager.Instance.OnScoreChanged -= UpdateScoreHUD;
+            GameManager.Instance.OnScoreChanged += UpdateScoreHUD;
 
             UpdateScoreHUD(GameManager.Instance.Score);
-
+            HandleStateChanged(GameManager.Instance.State);
         }
 
         /*if  (healthSystemPlayer != null)
@@ -48,37 +99,30 @@ public class UIManager : MonoBehaviour
 
         SetupResolutions();
         */
-        
+
     }
 
-    private void OnDestroy()
+    private void PlayButtonClickSound()
     {
-        if (GameManager.Instance != null)
+        if (AudioManager.Instance != null)
         {
-            GameManager.Instance.OnStateChanged += HandleStateChanged;
-            GameManager.Instance.OnScoreChanged += UpdateScoreHUD;
+            AudioManager.Instance.PlayClick();
         }
-
-         /*if  (healthSystemPlayer != null)
-        {
-            healthSystemPlayer.OnChangeHealthPlayer += UpdateHealthBar;
-        }*/
     }
+
     private void HandleStateChanged(GameState newState)
     {
-        if (pausePanel) pausePanel.SetActive(false);
-        if (victoryPanel) victoryPanel.SetActive(false);
-        if (gameOverPanel) gameOverPanel.SetActive(false);
-        if (settingsPanel) settingsPanel.SetActive(false);
+        CloseAllPanels();
 
         switch (newState)
         {
             case GameState.Start:
+                if (mainMenuPanel) mainMenuPanel.SetActive(true);
                 LockCursor(false);
                 break;
 
             case GameState.Playing:
-                LockCursor(true);
+                LockCursor(false);
                 break;
 
             case GameState.Paused:
@@ -122,6 +166,7 @@ public class UIManager : MonoBehaviour
 
     public void ChangeSceneByName(string sceneName)
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
     }
 
@@ -212,4 +257,11 @@ public class UIManager : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }*/
 
+    public void QuitGame()
+    {
+        Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
 }
