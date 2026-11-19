@@ -149,9 +149,23 @@ public class UIManager : MonoBehaviour
     {
         if (mainAudioMixer != null)
         {
-            // Convierte el valor lineal del Slider (0.0001 a 1) a Decibelios (-80dB a 0dB)
-            float db = Mathf.Log10(Mathf.Clamp(sliderValue, 0.0001f, 1f)) * 20f;
-            mainAudioMixer.SetFloat("MasterVolume", db);
+            mainAudioMixer.SetFloat("MasterVolume", Mathf.Log10(sliderValue)*20);
+        }
+    }
+
+    public void SetSFXVolume(float sliderValue)
+    {
+        if (mainAudioMixer != null)
+        {
+            mainAudioMixer.SetFloat("SFX", Mathf.Log10(sliderValue) * 20);
+        }
+    }
+
+    public void SetMusicVolume(float sliderValue)
+    {
+        if (mainAudioMixer != null)
+        {
+            mainAudioMixer.SetFloat("Music", Mathf.Log10(sliderValue) * 20);
         }
     }
 
@@ -165,7 +179,7 @@ public class UIManager : MonoBehaviour
         Screen.fullScreen = isFullscreen;
     }
 
-    private void SetupResolutions()
+    /*private void SetupResolutions()
     {
         if (resolutionDropdown == null) return;
 
@@ -196,10 +210,6 @@ public class UIManager : MonoBehaviour
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-    }
+    }*/
 
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
 }

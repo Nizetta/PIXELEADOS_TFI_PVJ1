@@ -155,7 +155,7 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("[GameManager] Saliendo del juego");
+        Debug.Log("Saliendo del juego");
         Application.Quit();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
