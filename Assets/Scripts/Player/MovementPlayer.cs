@@ -4,20 +4,17 @@ public class MovementPlayer : MonoBehaviour
 {
     [Header("Player Data")]
     [SerializeField] private PlayerStats playerStats;
-    //public float speed = 5f; 
-    [Header("Velocidad de movimiento")]
-    [SerializeField] private float speed = 2.2f;
-    [SerializeField] private float jumpForce = 5f;
 
     [Header("Raycast")]
     [SerializeField] private float distanciaRaycast = 0.1f;
     [SerializeField] private LayerMask groundLayer;
-
-    private float movimientoHorizontal;
-    private bool isGrounded;
     private Rigidbody2D rb;
     private Collider2D col;
     private Animator animator;
+
+    private float movimientoHorizontal;
+    private bool isGrounded;
+    
 
     private void Awake()
     {
@@ -41,6 +38,12 @@ public class MovementPlayer : MonoBehaviour
         {
             Debug.LogError("PlayerStats no está asignado");
             enabled = false;
+            return;
+        }
+
+        if (groundLayer.value == 0)
+        {
+            Debug.LogWarning("Ground Layer sin asignar: el jugador no detectará el suelo.");
         }
     }
     void Update()
@@ -58,7 +61,7 @@ public class MovementPlayer : MonoBehaviour
             return;
 
         Vector2 velocity = rb.linearVelocity;
-        velocity.x = movimientoHorizontal * speed;
+        velocity.x = movimientoHorizontal * playerStats.MovementSpeed;
         rb.linearVelocity = velocity;
 
         if (animator != null)
@@ -73,7 +76,7 @@ public class MovementPlayer : MonoBehaviour
                 animator.SetTrigger("salto");
             }
 
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, playerStats.JumpForce);
         }
     }
 
@@ -88,17 +91,6 @@ public class MovementPlayer : MonoBehaviour
         Debug.DrawRay(origen, Vector2.down * distanciaRaycast, colorRay);
         
     }
-    void OnDrawGizmos()
-    {
-        if (col != null)
-        {
-            float offsetY = col.bounds.extents.y + 0.02f;
-            Vector2 origen = (Vector2)transform.position + Vector2.down * offsetY;
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(origen, origen + Vector2.down * distanciaRaycast);
-        }
-    }
-
     private void CheckFlip()
     {
         if (movimientoHorizontal == 0)
@@ -112,6 +104,16 @@ public class MovementPlayer : MonoBehaviour
             Vector3 newScale = transform.localScale;
             newScale.x *= -1;
             transform.localScale = newScale;
+        }
+    }
+    void OnDrawGizmos()
+    {
+        if (col != null)
+        {
+            float offsetY = col.bounds.extents.y + 0.02f;
+            Vector2 origen = (Vector2)transform.position + Vector2.down * offsetY;
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawLine(origen, origen + Vector2.down * distanciaRaycast);
         }
     }
 }
