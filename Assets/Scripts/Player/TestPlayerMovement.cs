@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class TestPlayerMovement : MonoBehaviour
 {
     [Header("Player Stats")]
     [SerializeField] private PlayerStats playerStats;
