@@ -14,6 +14,7 @@ public class MovementPlayer : MonoBehaviour
 
     private float movimientoHorizontal;
     private bool isGrounded;
+    private bool atacando ;
     
 
     private void Awake()
@@ -78,6 +79,10 @@ public class MovementPlayer : MonoBehaviour
 
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, playerStats.JumpForce);
         }
+        if (Input.GetKeyDown(KeyCode.J) )
+           Atacando();
+
+        animator.SetBool("ataque",atacando);
     }
 
     private void CheckGround()
@@ -91,6 +96,8 @@ public class MovementPlayer : MonoBehaviour
         Debug.DrawRay(origen, Vector2.down * distanciaRaycast, colorRay);
         
     }
+    public void Atacando(){atacando=true;}
+    public void NoAtacando(){atacando=false;}
     private void CheckFlip()
     {
         if (movimientoHorizontal == 0)
