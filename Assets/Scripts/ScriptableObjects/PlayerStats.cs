@@ -9,8 +9,6 @@ public class PlayerStats : ScriptableObject
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private float jumpForce = 7.5f;
     [SerializeField] private int currentScore = 0;
-    [SerializeField] private float acceleration = 60f;
-    [SerializeField] private float deceleration = 80f;
     [SerializeField] private Vector2 checkpoint;
 
     public int MaxHealth => maxHealth;
@@ -18,8 +16,6 @@ public class PlayerStats : ScriptableObject
     public int CurrentScore => currentScore;
     public float MovementSpeed => movementSpeed;
     public float JumpForce => jumpForce;
-    public float Acceleration => acceleration;
-    public float Deceleration => deceleration;
     public Vector2 Checkpoint
     {
         get { return checkpoint; }
@@ -32,6 +28,7 @@ public class PlayerStats : ScriptableObject
     }
     public bool TakeDamage(int amount)
     {
+        if (currentHealth <= 0) return false;
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
         return true;
     }
