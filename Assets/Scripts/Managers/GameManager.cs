@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
     // ---------- ESTADO SEGÚN LA ESCENA ----------
     private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        sceneTransition = null;
         ApplySceneState(scene);
     }
 
@@ -103,6 +104,7 @@ public class GameManager : MonoBehaviour
         {
             if (!sessionStarted) BeginSession();
             SetState(GameState.Playing);
+            Debug.Log($"State actual: {State}");
         }
     }
 
@@ -164,23 +166,23 @@ public class GameManager : MonoBehaviour
     }
 
     // Pasa al siguiente nivel conservando puntaje, vida e ítems; si era el último, gana.
-  /*  public void CompleteLevel()
+    public void CompleteLevel()
     {
         if (State != GameState.Playing) return;
 
         string current = SceneManager.GetActiveScene().name;
-        int index = Array.IndexOf(SceneNames.Levels, current);
+        int index = Array.IndexOf(levelSceneName, current);
 
-        if (index >= 0 && index + 1 < SceneNames.Levels.Length)
+        if (index >= 0 && index + 1 < levelSceneName.Length)
         {
-            Debug.Log("[GameManager] Nivel completado: " + current + " -> " + SceneNames.Levels[index + 1]);
-            StartCoroutine(FadeAndLoadScene(SceneNames.Levels[index + 1]));
+            Debug.Log("[GameManager] Nivel completado: " + current + " -> " + levelSceneName[index + 1]);
+            StartCoroutine(FadeAndLoadScene(levelSceneName[index + 1]));
         }
         else
         {
             Win();
         }
-    }*/
+    }
 
     public void Win()
     {

@@ -34,6 +34,8 @@ public class UIManager : MonoBehaviour
     [Header("HUD Elements")]
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private Slider healthSlider;
+    [SerializeField] private TextMeshProUGUI victoryScoreText;
+    [SerializeField] private TextMeshProUGUI gameOverScoreText;
 
     [Header("Audio-Settings")]
     [SerializeField] private AudioMixer mainAudioMixer;
@@ -57,52 +59,21 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.OnStateChanged += HandleStateChanged;
-            GameManager.Instance.OnScoreChanged += UpdateScoreHUD;
-        }
-
-        if (sceneButtons != null)
-        {
-            foreach (Button btn in sceneButtons)
-            {
-                if (btn != null)
-                {
-                    btn.onClick.AddListener(PlayButtonClickSound);
-                }
-            }
-        }
+        SubscribeToGameManager();
+        HookButtonSounds();
     }
 
     private void OnDisable()
     {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.OnStateChanged -= HandleStateChanged;
-            GameManager.Instance.OnScoreChanged -= UpdateScoreHUD;
-        }
-
-        if (sceneButtons != null)
-        {
-            foreach (Button btn in sceneButtons)
-            {
-                if (btn != null)
-                {
-                    btn.onClick.RemoveListener(PlayButtonClickSound);
-                }
-            }
-        }
+        UnsubscribeFromGameManager();
+        UnhookButtonSounds();
     }
     void Start()
     {
+        SubscribeToGameManager();
+
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.OnStateChanged -= HandleStateChanged;
-            GameManager.Instance.OnStateChanged += HandleStateChanged;
-            GameManager.Instance.OnScoreChanged -= UpdateScoreHUD;
-            GameManager.Instance.OnScoreChanged += UpdateScoreHUD;
-
             UpdateScoreHUD(GameManager.Instance.Score);
             HandleStateChanged(GameManager.Instance.State);
         }
@@ -115,6 +86,53 @@ public class UIManager : MonoBehaviour
         SetupResolutions();
         */
         LoadSettings();
+    }
+
+    private void SubscribeToGameManager()
+    {
+        if (GameManager.Instance == null) return;
+
+        GameManager.Instance.OnStateChanged -= HandleStateChanged;
+        GameManager.Instance.OnStateChanged += HandleStateChanged;
+
+        GameManager.Instance.OnScoreChanged -= UpdateScoreHUD;
+        GameManager.Instance.OnScoreChanged += UpdateScoreHUD;
+    }
+
+    private void UnsubscribeFromGameManager()
+    {
+        if (GameManager.Instance == null) return;
+
+        GameManager.Instance.OnStateChanged -= HandleStateChanged;
+        GameManager.Instance.OnScoreChanged -= UpdateScoreHUD;
+    }
+
+    private void HookButtonSounds()
+    {
+        if (!autoHookButtonSounds) return;
+
+        Canvas parentCanvas = GetComponentInParent<Canvas>();
+        sceneButtons = parentCanvas != null
+            ? parentCanvas.GetComponentsInChildren<Button>(true)
+            : GetComponentsInChildren<Button>(true);
+
+        foreach (Button btn in sceneButtons)
+        {
+            if (btn == null) continue;
+            btn.onClick.RemoveListener(PlayButtonClickSound);
+            btn.onClick.AddListener(PlayButtonClickSound);
+        }
+    }
+
+    private void UnhookButtonSounds()
+    {
+        if (sceneButtons == null) return;
+
+        foreach (Button btn in sceneButtons)
+        {
+            if (btn == null) continue;
+            btn.onClick.RemoveListener(PlayButtonClickSound);
+        }
     }
 
     public void LoadSettings()
@@ -172,11 +190,13 @@ public class UIManager : MonoBehaviour
 
             case GameState.Victory:
                 if (victoryPanel) victoryPanel.SetActive(true);
+                UpdateEndScoreText(victoryScoreText);
                 LockCursor(false);
                 break;
 
             case GameState.GameOver:
                 if (gameOverPanel) gameOverPanel.SetActive(true);
+                UpdateEndScoreText(gameOverScoreText);
                 LockCursor(false);
                 break;
         }
@@ -196,6 +216,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void UpdateEndScoreText(TextMeshProUGUI targetText)
+    {
+        if (targetText == null) return;
+
+        int finalScore = GameManager.Instance != null ? GameManager.Instance.Score : 0;
+        targetText.text = $"Puntaje final: {finalScore}";
+    }
+
     private void UpdateHealthBar(float healthNormalized)
     {
         if (healthSlider != null)
@@ -204,10 +232,30 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void StartGame(string firstLevelName)
+    {
+        Time.timeScale = 1f;
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.StartNewGame(firstLevelName);
+        }
+        else
+        {
+            SceneManager.LoadScene(firstLevelName);
+        }
+    }
+
     public void ChangeSceneByName(string sceneName)
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(sceneName);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.StartNewGame(sceneName);
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneName);
+        }
     }
 
     public void CloseAllPanels()
@@ -322,9 +370,51 @@ public class UIManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        Time.timeScale = 1f;
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.QuitGame();
+        }
+        else
+        {
+            Application.Quit();
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
 #endif
+        }
+    }
+
+    public void ResumeGame()
+    {
+        if (GameManager.Instance != null && GameManager.Instance.State == GameState.Paused)
+        {
+            GameManager.Instance.Paused();
+        }
+    }
+
+    public void RestartLevel()
+    {
+        Time.timeScale = 1f;
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.RestartCurrentLevel();
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1f;
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.LoadMainMenu();
+        }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }
