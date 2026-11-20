@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   maxHealth: 100
-  currentHealth: 0
+  currentHealth: 100
   movementSpeed: 5
   jumpForce: 14
   currentScore: 0
