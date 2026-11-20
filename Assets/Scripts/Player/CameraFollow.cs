@@ -1,92 +1,29 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Camera))]
 public class CameraFollow : MonoBehaviour
 {
-    [Header("Velocidad de movimiento")]
-    [SerializeField] private float speed = 2.2f;
-    [SerializeField] private float jumpForce = 5f;
+    [Header("Target Settings")]
+    public Transform target;
+    public float smoothSpeed = 5f;
+    public Vector3 offset = new Vector3(0, 0, -10f);
 
-    [Header("Raycast")]
-    [SerializeField] private float distanciaRaycast = 0.1f;
-    [SerializeField] private LayerMask groundLayer;
+    [Header("Settings Boundaries")]
+    public Vector2 minBounds; // vector de la esquina inferior izquierda 
+    public Vector2 maxBounds; // vector de la esquina superior derecha 
 
-    private float movimientoHorizontal;
-    private bool isGrounded;
-    private Rigidbody2D rb;
-    private Collider2D col;
-    private Animator animator;
-
-    private void Awake()
+    void LateUpdate()
     {
-        rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<Collider2D>();
-        animator = GetComponent<Animator>();
+        if (target == null) return;
 
-        if (rb == null)
-        {
-            Debug.LogError("Falta el Rigidbody2D en el personaje.");
-        }
+        Vector3 position = target.position + offset;
 
-        if (animator == null)
-        {
-            Debug.LogWarning("No se encontró Animator en el personaje. La animación no se actualizará.");
-        }
-    }
 
-    private void Update()
-    {
-        movimientoHorizontal = Input.GetAxisRaw("Horizontal");
-        CheckGround();
-        CheckFlip();
+        float clampedX = Mathf.Clamp(position.x, minBounds.x, maxBounds.x);
+        float clampedY = Mathf.Clamp(position.y, minBounds.y, maxBounds.y);
 
-        if (animator != null)
-        {
-            animator.SetFloat("horizontal", Mathf.Abs(movimientoHorizontal));
-        }
+        Vector3 clampedPosition = new Vector3(clampedX, clampedY, position.z);
 
-        if (rb == null)
-            return;
-
-        Vector2 velocity = rb.linearVelocity;
-        velocity.x = movimientoHorizontal * speed;
-        rb.linearVelocity = velocity;
-
-        //animator.SetBool("suelo", isGrounded);
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            if (animator != null)
-            {
-                animator.SetTrigger("salto");
-            }
-
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-        }
-    }
-
-    private void CheckGround()
-    {
-        float offsetY = col != null ? col.bounds.extents.y + 0.02f : 0.5f;
-        Vector2 origen = (Vector2)transform.position + Vector2.down * offsetY;
-        isGrounded = Physics2D.Raycast(origen, Vector2.down, distanciaRaycast, groundLayer);
-
-        Color colorRay = isGrounded ? Color.green : Color.red;
-        Debug.DrawRay(origen, Vector2.down * distanciaRaycast, colorRay);
-    }
-
-    private void CheckFlip()
-    {
-        if (movimientoHorizontal == 0)
-            return;
-
-        bool movingRight = movimientoHorizontal > 0;
-        bool facingRight = transform.localScale.x >= 0;
-
-        if (movingRight != facingRight)
-        {
-            Vector3 newScale = transform.localScale;
-            newScale.x *= -1;
-            transform.localScale = newScale;
-        }
+        transform.position = Vector3.Lerp(transform.position, clampedPosition, smoothSpeed * Time.deltaTime);
     }
 }
