@@ -1,71 +1,60 @@
-#  PROYECTO FINAL
-**NOMBRE PROYECTO:** PIXELEADOS
+# Pixeleados
 
-# Datos del alumnoS
-**Izetta Nicolas Denis** LU:461 DNI:44280726
+Proyecto final de **Programación de Videojuegos I**, desarrollado con Unity. Es un juego 2D de estilo pixel art en el que el jugador recorre niveles, enfrenta enemigos y trampas, recoge gemas y busca llegar al final.
 
-# ASIGNATURA
-> **Asignatura:** Programación de Videojuegos I 
-> **Carrera:** Tecnicatura Universitaria en Diseño Integral de Videojuegos (TUDIVJ) — UNJu 
-> **Trabajo Práctico N° 2:** 
->**Equipo Docente:** Mg. Ing. Ariel Alejandro Vega | Tecn. Kevin Alexis Roman Llampa 
+## Participantes 
 
+- **Estudiante:** 
+- **Estudiante:** 
+- **Estudiante:** Izetta Nicolas Denis
 
-# Proyecto de Videojuego Unity
+## Información académica
 
-Este proyecto es un prototipo de videojuego desarrollado con Unity 6000.5.7f1. La base del juego incluye movimiento del personaje, movientos de enemigos generado por ia, tienen vida, jugador y enemigo, usan ataques para eliminar el otro, tiene inicio, final y pause
-
-## Descripción general
-
-El juego está orientado a una experiencia simple de exploración: el jugador se desplaza por el escenario, escapar de los centinelas o enemigos.
-
-## Características principales
-
-- Movimiento del personaje en 3D
-- Uso de Input System y componentes de Unity
-
-## Controles
-
-- WASD: movimiento del personaje
-- Space / Jump: posible desplazamiento vertical o movimiento extra según la configuración de la escena
-- Mouse: movimiento camara
-- Click izquierdo: atacar
-- P: pausar
-- R: reaudar juego 
-
-> Los controles pueden ajustarse según la escena final o la configuración del proyecto en Unity.
-
-## Objetivo del juego
-
-1. Moverse por el mapa.
-2. Escapar de los centinelas.
-
-## Estructura del proyecto
-
-```text
-Assets/
-  Scenes/
-  Scripts/
-  Settings/
-  Synty/
-  TextMesh Pro/
-Packages/
-ProjectSettings/
-README.md
-```
-
-Los scripts principales se encuentran en `Assets/Scripts` y contienen la lógica de:
-
-- movimiento del jugador
-- ataque
-- enemigo ia
-- game manager
-- cámara
-- sistema de vida
-- menu principal
+- **Carrera:** Tecnicatura Universitaria en Diseño Integral de Videojuegos (TUDIVJ), UNJu
+- **Asignatura:** Programación de Videojuegos I
+- **Trabajo práctico:** N.º 2
+- **Equipo docente:** Mg. Ing. Ariel Alejandro Vega y Tecn. Kevin Alexis Román Llampa
 
 ## Requisitos
 
+- Unity **6000.5.8f1** (versión del editor del proyecto)
 - Unity Hub
-- Unity 6000.5.7f1 o compatible
-- Visual Studio o VS Code para edición de scripts
+- Visual Studio, Visual Studio Code u otro editor compatible con C#
+
+## Controles
+
+| Acción | Teclas |
+|---|---|
+| Moverse | A / D o flechas izquierda / derecha |
+| Saltar | Espacio |
+| Atacar | J |
+| Pausar o reanudar | P o Escape |
+
+## Características
+
+- Movimiento, salto y animaciones del jugador.
+- Enemigos, trampas y sistema de daño con períodos de inmunidad.
+- Recolección de gemas y administración del puntaje.
+- Menú, pausa, transiciones entre escenas y progreso por niveles.
+- Recursos gráficos y mapas de estilo pixel art.
+
+## Estructura principal
+
+```text
+Assets/
+  Scenes/       Menú y niveles
+  Scripts/      Lógica del jugador, enemigos, interfaz y sistemas del juego
+  Prefabs/      Objetos reutilizables
+  TileMaps/     Recursos para construir escenarios
+  animations/   Clips y controladores de animación
+  Audio/        Recursos de sonido
+Packages/       Dependencias de Unity
+ProjectSettings/ Configuración del proyecto
+```
+
+## Tecnologías
+
+- Unity 2D y C#
+- Física 2D y Tilemap
+- Animator para las animaciones
+- TextMesh Pro para elementos de interfaz
