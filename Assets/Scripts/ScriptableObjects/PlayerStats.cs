@@ -24,11 +24,12 @@ public class PlayerStats : ScriptableObject
     public void ResetStats()
     {
         currentHealth = maxHealth;
-        currentScore = 0; 
+        currentScore = 0;
     }
-    public void TakeDamage(int amount)
+    public bool TakeDamage(int amount)
     {
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
+        return true;
     }
     public void Heal(int amount)
     {
