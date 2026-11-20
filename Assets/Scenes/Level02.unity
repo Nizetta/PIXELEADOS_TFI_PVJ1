@@ -24192,7 +24192,7 @@ Transform:
   m_GameObject: {fileID: 243236476}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.6581, y: 8.85173, z: 0}
+  m_LocalPosition: {x: 20.6581, y: 9.451731, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -25368,11 +25368,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4552130958034244, guid: be606927570960d41840faadd8952d4c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 62
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 4552130958034244, guid: be606927570960d41840faadd8952d4c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.06852561
+      value: 0.66852564
       objectReference: {fileID: 0}
     - target: {fileID: 4552130958034244, guid: be606927570960d41840faadd8952d4c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -53334,6 +53334,7 @@ GameObject:
   - component: {fileID: 938415293}
   - component: {fileID: 938415296}
   - component: {fileID: 938415297}
+  - component: {fileID: 938415298}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -53384,7 +53385,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3.75
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -53476,6 +53477,30 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: -10}
   minBounds: {x: 0, y: -11}
   maxBounds: {x: 85, y: 20.3}
+--- !u!114 &938415298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938415292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.PixelPerfectCamera
+  m_ComponentVersion: 1
+  m_AssetsPPU: 48
+  m_RefResolutionX: 640
+  m_RefResolutionY: 360
+  m_CropFrame: 0
+  m_GridSnapping: 2
+  m_FilterMode: 0
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1 &952448681
 GameObject:
   m_ObjectHideFlags: 0
@@ -57692,7 +57717,7 @@ Transform:
   m_GameObject: {fileID: 1519804947}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -58714,7 +58739,7 @@ Transform:
   m_GameObject: {fileID: 1604475304}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.55, y: -2.52, z: 0}
+  m_LocalPosition: {x: -3.5500002, y: -1.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
     // ---------- ESTADO SEGÚN LA ESCENA ----------
     private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        sceneTransition = null;
         ApplySceneState(scene);
     }
 
@@ -103,6 +104,7 @@ public class GameManager : MonoBehaviour
         {
             if (!sessionStarted) BeginSession();
             SetState(GameState.Playing);
+            Debug.Log($"State actual: {State}");
         }
     }
 
