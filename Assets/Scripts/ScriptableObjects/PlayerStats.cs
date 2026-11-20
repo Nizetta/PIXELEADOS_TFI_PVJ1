@@ -7,7 +7,7 @@ public class PlayerStats : ScriptableObject
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int currentHealth;
     [SerializeField] private float movementSpeed = 5f;
-    [SerializeField] private float jumpForce = 7f;
+    [SerializeField] private float jumpForce = 7.5f;
     [SerializeField] private int currentScore = 0;
     [SerializeField] private float acceleration = 60f;
     [SerializeField] private float deceleration = 80f;
