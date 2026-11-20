@@ -15,6 +15,6 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   movementSpeed: 5
-  jumpForce: 7
+  jumpForce: 14
   currentScore: 0
   checkpoint: {x: 0, y: 0}
