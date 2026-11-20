@@ -122,8 +122,8 @@ public class GameManager : MonoBehaviour
     private void BeginSession()
     {
         Score = 0;
-        CurrentHealth = 0;
-        MaxHealth = 0;
+        CurrentHealth = 100;
+        MaxHealth = 100;
         items.Clear();
         sessionStarted = true;
         OnScoreChanged?.Invoke(Score);
