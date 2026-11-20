@@ -1,12 +1,23 @@
-# Pixeleados
+## Nombre del videojuego
 
-Proyecto final de **Programación de Videojuegos I**, desarrollado con Unity. Es un juego 2D de estilo pixel art en el que el jugador recorre niveles, enfrenta enemigos y trampas, recoge gemas y busca llegar al final.
+-
+
+## Nombre del Equipo
+
+- Pixeleados 
+
 
 ## Participantes 
 
-- **Estudiante:** 
-- **Estudiante:** 
+- **Estudiante:** Tastaca Cecilia
+- **Estudiante:** Quispe Tamara
 - **Estudiante:** Izetta Nicolas Denis
+
+-Capturas o gif
+## Descripcion del juego 
+
+Proyecto final de **Programación de Videojuegos I**, desarrollado con Unity. Es un juego 2D de estilo pixel art en el que el jugador recorre niveles, enfrenta enemigos y trampas, recoge gemas y busca llegar al final.
+
 
 ## Información académica
 
@@ -58,3 +69,9 @@ ProjectSettings/ Configuración del proyecto
 - Física 2D y Tilemap
 - Animator para las animaciones
 - TextMesh Pro para elementos de interfaz
+
+## Ramas y roles 
+
+- tastaca-cecilia
+- tamara-quispe
+- IzettaNicolas 
