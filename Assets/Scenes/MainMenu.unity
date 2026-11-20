@@ -7535,6 +7535,8 @@ MonoBehaviour:
   qualityDropdown: {fileID: 1052770138}
   scoreText: {fileID: 0}
   healthSlider: {fileID: 0}
+  victoryScoreText: {fileID: 0}
+  gameOverScoreText: {fileID: 0}
   mainAudioMixer: {fileID: 24100000, guid: 6de7f8e156012314eb152236c551b29c, type: 2}
   autoHookButtonSounds: 1
 --- !u!224 &1464239530
