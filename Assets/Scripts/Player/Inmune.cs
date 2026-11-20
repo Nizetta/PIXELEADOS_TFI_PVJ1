@@ -39,10 +39,12 @@ public class Inmune : MonoBehaviour
 
         if (damageApplied)
         {
+            Debug.Log($"Vida del jugador: {playerStats.CurrentHealth}/{playerStats.MaxHealth}");
             if (immunityCoroutine != null)
                 StopCoroutine(immunityCoroutine);
 
             immunityCoroutine = StartCoroutine(InmunityTimer());
+            
         }
 
         return damageApplied;
