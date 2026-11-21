@@ -153,7 +153,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -218,11 +218,11 @@ TextureImporter:
       name: Golem_1_die_0
       rect:
         serializedVersion: 2
-        x: 25
+        x: 26
         y: 0
-        width: 40
-        height: 39
-      alignment: 0
+        width: 38
+        height: 38
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -240,11 +240,11 @@ TextureImporter:
       name: Golem_1_die_1
       rect:
         serializedVersion: 2
-        x: 115
+        x: 116
         y: 0
-        width: 41
-        height: 41
-      alignment: 0
+        width: 39
+        height: 40
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -262,11 +262,11 @@ TextureImporter:
       name: Golem_1_die_2
       rect:
         serializedVersion: 2
-        x: 204
+        x: 205
         y: 0
-        width: 43
-        height: 44
-      alignment: 0
+        width: 41
+        height: 43
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -284,11 +284,11 @@ TextureImporter:
       name: Golem_1_die_3
       rect:
         serializedVersion: 2
-        x: 292
+        x: 293
         y: 0
-        width: 30
-        height: 22
-      alignment: 0
+        width: 28
+        height: 21
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -306,11 +306,11 @@ TextureImporter:
       name: Golem_1_die_4
       rect:
         serializedVersion: 2
-        x: 306
-        y: 13
-        width: 22
-        height: 32
-      alignment: 0
+        x: 307
+        y: 14
+        width: 20
+        height: 30
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -328,11 +328,11 @@ TextureImporter:
       name: Golem_1_die_5
       rect:
         serializedVersion: 2
-        x: 323
+        x: 324
         y: 0
-        width: 15
-        height: 23
-      alignment: 0
+        width: 13
+        height: 22
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -350,11 +350,11 @@ TextureImporter:
       name: Golem_1_die_6
       rect:
         serializedVersion: 2
-        x: 395
-        y: 11
-        width: 23
-        height: 33
-      alignment: 0
+        x: 396
+        y: 12
+        width: 21
+        height: 31
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -372,11 +372,11 @@ TextureImporter:
       name: Golem_1_die_7
       rect:
         serializedVersion: 2
-        x: 486
-        y: 11
-        width: 22
-        height: 29
-      alignment: 0
+        x: 487
+        y: 12
+        width: 20
+        height: 27
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -394,11 +394,11 @@ TextureImporter:
       name: Golem_1_die_8
       rect:
         serializedVersion: 2
-        x: 575
-        y: 19
-        width: 11
-        height: 15
-      alignment: 0
+        x: 576
+        y: 20
+        width: 9
+        height: 13
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -416,11 +416,11 @@ TextureImporter:
       name: Golem_1_die_9
       rect:
         serializedVersion: 2
-        x: 575
+        x: 576
         y: 0
-        width: 23
-        height: 23
-      alignment: 0
+        width: 21
+        height: 22
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -438,11 +438,11 @@ TextureImporter:
       name: Golem_1_die_10
       rect:
         serializedVersion: 2
-        x: 592
-        y: 19
-        width: 7
-        height: 13
-      alignment: 0
+        x: 593
+        y: 20
+        width: 5
+        height: 11
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -460,11 +460,11 @@ TextureImporter:
       name: Golem_1_die_11
       rect:
         serializedVersion: 2
-        x: 666
-        y: 10
-        width: 10
-        height: 15
-      alignment: 0
+        x: 667
+        y: 11
+        width: 8
+        height: 13
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -482,11 +482,11 @@ TextureImporter:
       name: Golem_1_die_12
       rect:
         serializedVersion: 2
-        x: 681
-        y: 9
-        width: 8
-        height: 15
-      alignment: 0
+        x: 682
+        y: 10
+        width: 6
+        height: 13
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -504,11 +504,11 @@ TextureImporter:
       name: Golem_1_die_13
       rect:
         serializedVersion: 2
-        x: 377
+        x: 378
         y: 0
-        width: 35
-        height: 16
-      alignment: 0
+        width: 33
+        height: 15
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -526,11 +526,11 @@ TextureImporter:
       name: Golem_1_die_14
       rect:
         serializedVersion: 2
-        x: 415
+        x: 416
         y: 0
-        width: 19
-        height: 17
-      alignment: 0
+        width: 17
+        height: 16
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -548,11 +548,11 @@ TextureImporter:
       name: Golem_1_die_15
       rect:
         serializedVersion: 2
-        x: 466
+        x: 467
         y: 0
-        width: 19
-        height: 9
-      alignment: 0
+        width: 17
+        height: 8
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -570,11 +570,11 @@ TextureImporter:
       name: Golem_1_die_16
       rect:
         serializedVersion: 2
-        x: 485
-        y: 4
-        width: 17
-        height: 9
-      alignment: 0
+        x: 486
+        y: 5
+        width: 15
+        height: 7
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -592,11 +592,11 @@ TextureImporter:
       name: Golem_1_die_17
       rect:
         serializedVersion: 2
-        x: 501
-        y: 6
-        width: 7
-        height: 9
-      alignment: 0
+        x: 502
+        y: 7
+        width: 5
+        height: 7
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -614,11 +614,11 @@ TextureImporter:
       name: Golem_1_die_18
       rect:
         serializedVersion: 2
-        x: 506
+        x: 507
         y: 0
-        width: 19
-        height: 10
-      alignment: 0
+        width: 17
+        height: 9
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -636,11 +636,11 @@ TextureImporter:
       name: Golem_1_die_19
       rect:
         serializedVersion: 2
-        x: 554
+        x: 555
         y: 0
-        width: 21
-        height: 10
-      alignment: 0
+        width: 19
+        height: 9
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -658,11 +658,11 @@ TextureImporter:
       name: Golem_1_die_20
       rect:
         serializedVersion: 2
-        x: 597
+        x: 598
         y: 0
-        width: 18
-        height: 9
-      alignment: 0
+        width: 16
+        height: 8
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -680,11 +680,11 @@ TextureImporter:
       name: Golem_1_die_21
       rect:
         serializedVersion: 2
-        x: 643
+        x: 644
         y: 0
-        width: 21
-        height: 12
-      alignment: 0
+        width: 19
+        height: 11
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -702,11 +702,11 @@ TextureImporter:
       name: Golem_1_die_22
       rect:
         serializedVersion: 2
-        x: 663
+        x: 664
         y: 0
-        width: 39
-        height: 14
-      alignment: 0
+        width: 37
+        height: 13
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -724,11 +724,11 @@ TextureImporter:
       name: Golem_1_die_23
       rect:
         serializedVersion: 2
-        x: 698
-        y: 2
-        width: 8
-        height: 8
-      alignment: 0
+        x: 699
+        y: 3
+        width: 6
+        height: 6
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -746,11 +746,11 @@ TextureImporter:
       name: Golem_1_die_24
       rect:
         serializedVersion: 2
-        x: 733
+        x: 734
         y: 0
-        width: 58
-        height: 17
-      alignment: 0
+        width: 56
+        height: 16
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -768,11 +768,11 @@ TextureImporter:
       name: Golem_1_die_25
       rect:
         serializedVersion: 2
-        x: 789
-        y: 0
-        width: 8
-        height: 9
-      alignment: 0
+        x: 790
+        y: 1
+        width: 6
+        height: 7
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -790,11 +790,11 @@ TextureImporter:
       name: Golem_1_die_26
       rect:
         serializedVersion: 2
-        x: 823
+        x: 824
         y: 0
-        width: 39
-        height: 14
-      alignment: 0
+        width: 37
+        height: 13
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -812,11 +812,11 @@ TextureImporter:
       name: Golem_1_die_27
       rect:
         serializedVersion: 2
-        x: 858
+        x: 859
         y: 0
-        width: 22
-        height: 9
-      alignment: 0
+        width: 20
+        height: 8
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -834,11 +834,11 @@ TextureImporter:
       name: Golem_1_die_28
       rect:
         serializedVersion: 2
-        x: 872
-        y: 5
-        width: 7
-        height: 6
-      alignment: 0
+        x: 873
+        y: 6
+        width: 5
+        height: 4
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -856,11 +856,11 @@ TextureImporter:
       name: Golem_1_die_29
       rect:
         serializedVersion: 2
-        x: 879
+        x: 880
         y: 0
-        width: 8
-        height: 8
-      alignment: 0
+        width: 6
+        height: 7
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -878,11 +878,11 @@ TextureImporter:
       name: Golem_1_die_30
       rect:
         serializedVersion: 2
-        x: 914
+        x: 915
         y: 0
-        width: 48
-        height: 9
-      alignment: 0
+        width: 46
+        height: 8
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -900,11 +900,11 @@ TextureImporter:
       name: Golem_1_die_31
       rect:
         serializedVersion: 2
-        x: 962
-        y: 2
-        width: 7
-        height: 6
-      alignment: 0
+        x: 963
+        y: 3
+        width: 5
+        height: 4
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -922,11 +922,11 @@ TextureImporter:
       name: Golem_1_die_32
       rect:
         serializedVersion: 2
-        x: 485
+        x: 486
         y: 0
-        width: 16
-        height: 5
-      alignment: 0
+        width: 14
+        height: 4
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -944,11 +944,11 @@ TextureImporter:
       name: Golem_1_die_33
       rect:
         serializedVersion: 2
-        x: 969
+        x: 970
         y: 0
-        width: 8
-        height: 5
-      alignment: 0
+        width: 6
+        height: 4
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -966,11 +966,11 @@ TextureImporter:
       name: Golem_1_die_34
       rect:
         serializedVersion: 2
-        x: 1025
+        x: 1026
         y: 0
-        width: 32
-        height: 5
-      alignment: 0
+        width: 30
+        height: 4
+      alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -988,7 +988,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2ffb71eb95b926a44ab12e2c43272c0b
     internalID: 0
     vertices: []
     indices: 
@@ -996,7 +996,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":1,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Golem_1_die_0: -3499944936518720492
       Golem_1_die_1: 2766055293292107051

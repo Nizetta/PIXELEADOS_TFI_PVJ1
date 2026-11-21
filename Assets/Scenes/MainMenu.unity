@@ -7538,6 +7538,7 @@ MonoBehaviour:
   victoryScoreText: {fileID: 0}
   gameOverScoreText: {fileID: 0}
   mainAudioMixer: {fileID: 24100000, guid: 6de7f8e156012314eb152236c551b29c, type: 2}
+  healthSystemPlayer: {fileID: 0}
   autoHookButtonSounds: 1
 --- !u!224 &1464239530
 RectTransform:
@@ -7812,6 +7813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 198195a3277bbeb4faa08df980a4234a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  playerStats: {fileID: 11400000, guid: 1926bc20dd9bed845930b5d62b23441a, type: 2}
   mainMenuSceneName: MainMenu
   levelSceneName:
   - Level01

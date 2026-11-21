@@ -15,6 +15,7 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
+    //static
     public static GameManager Instance { get; private set; }
 
     [Header("Game Data")]
@@ -23,10 +24,13 @@ public class GameManager : MonoBehaviour
     public int CurrentHealth { get; private set; }
     public int MaxHealth { get; private set; }
 
+    [Header("Player Data")]
+    [SerializeField] private PlayerStats playerStats;
+
     private readonly List<ItemData> items = new List<ItemData>();
     public IReadOnlyList<ItemData> Items => items;
 
-    [Header("Scene Configurattion")]
+    [Header("Scene Configuration")]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
     [SerializeField] private string[] levelSceneName;
 
@@ -42,6 +46,13 @@ public class GameManager : MonoBehaviour
 
     //--- Transicion con Fade entre niveles ---
     private SceneTransition sceneTransition;
+
+    //--Datos al inicio de cada nivel --
+    private int levelStartScore;
+    private int levelStartHealth;
+    private int levelStartMaxHealth;
+    private readonly List<ItemData> levelStartItems = new List<ItemData>();
+    private bool hasLevelData;
 
     private void Awake()
     {
@@ -98,14 +109,28 @@ public class GameManager : MonoBehaviour
 
         if (sceneName == mainMenuSceneName)
         {
+            hasLevelData = false;
             SetState(GameState.Start);
         }
         else
         {
             if (!sessionStarted) BeginSession();
             SetState(GameState.Playing);
+            SaveLevelStartData();
             Debug.Log($"State actual: {State}");
         }
+    }
+
+    private void SaveLevelStartData()
+    {
+        levelStartScore = Score;
+        levelStartHealth = CurrentHealth;
+        levelStartMaxHealth = MaxHealth;
+
+        levelStartItems.Clear();
+        levelStartItems.AddRange(items);
+
+        hasLevelData = true;
     }
 
     private void SetState(GameState newState)
@@ -121,12 +146,16 @@ public class GameManager : MonoBehaviour
 
     private void BeginSession()
     {
-        Score = 0;
-        CurrentHealth = 100;
-        MaxHealth = 100;
+        Score = playerStats != null ? playerStats.CurrentScore : 0;
+        MaxHealth = playerStats != null ? playerStats.CurrentHealth : 100;
+        CurrentHealth = MaxHealth;
+                
         items.Clear();
         sessionStarted = true;
+
         OnScoreChanged?.Invoke(Score);
+        OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
+        OnItemCollected?.Invoke(null);
     }
 
     public void Paused()
@@ -144,16 +173,37 @@ public class GameManager : MonoBehaviour
 
     public void RestartCurrentLevel()
     {
-        BeginSession();
         Time.timeScale = 1f;
+        if (hasLevelData)
+        {
+            RestoreLevelStartData();
+        }
+        else
+        {
+            BeginSession();
+        }
         string currentScene = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentScene);
+        StartCoroutine(FadeAndLoadScene(currentScene));
     }
 
+    private void RestoreLevelStartData()
+    {
+        Score = levelStartScore;
+        MaxHealth = levelStartMaxHealth;
+        CurrentHealth = levelStartHealth;
+
+        items.Clear();
+        items.AddRange(levelStartItems);
+
+        OnScoreChanged?.Invoke(Score);
+        OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
+        OnItemCollected?.Invoke(null);
+    }
     public void LoadMainMenu()
     {
         sessionStarted = false;
-        LoadScene(mainMenuSceneName);
+        Time.timeScale = 1f;
+        StartCoroutine(FadeAndLoadScene(mainMenuSceneName));
     }
 
     public void QuitGame()
@@ -215,9 +265,9 @@ public class GameManager : MonoBehaviour
         if (State != GameState.Playing || item == null) return;
 
         items.Add(item);
-        //Debug.Log("[GameManager] Ítem recolectado: " + item.DisplayName);
+        Debug.Log("[GameManager] Ítem recolectado: " + item.ItemName);
         OnItemCollected?.Invoke(item);
-        //AddScore(item.Points);
+        AddScore(item.ScoreValue);
     }
 
     public void ReportHealth(int current, int max)
@@ -249,8 +299,13 @@ public class GameManager : MonoBehaviour
     private IEnumerator FadeAndLoadScene(string sceneName)
     {
         AudioManager.Instance?.FadeMusicOut();
-        GetSceneTransition().FadeOut();
-        yield return GetSceneTransition().changeAlpha; // Espera a que termine el fade out
+        SceneTransition transition = GetSceneTransition();
+
+        if (transition != null)
+        {
+            transition.FadeOut();
+            yield return GetSceneTransition().changeAlpha; // Espera a que termine el fade out
+        }
         LoadScene(sceneName);
     }
     private SceneTransition GetSceneTransition()
