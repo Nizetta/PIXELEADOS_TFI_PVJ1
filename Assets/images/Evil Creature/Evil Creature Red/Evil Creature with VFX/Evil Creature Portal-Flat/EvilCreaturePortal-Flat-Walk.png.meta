@@ -78,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -143,12 +143,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Walk_0
       rect:
         serializedVersion: 2
-        x: 31
+        x: 32
         y: 0
-        width: 29
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 27
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -165,12 +165,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Walk_1
       rect:
         serializedVersion: 2
-        x: 123
+        x: 124
         y: 0
-        width: 24
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 22
+        height: 46
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -187,12 +187,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Walk_2
       rect:
         serializedVersion: 2
-        x: 215
+        x: 216
         y: 0
-        width: 21
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 19
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -209,12 +209,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Walk_3
       rect:
         serializedVersion: 2
-        x: 305
+        x: 306
         y: 0
-        width: 21
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 19
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -231,12 +231,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Walk_4
       rect:
         serializedVersion: 2
-        x: 395
+        x: 396
         y: 0
-        width: 21
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 19
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -253,12 +253,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Walk_5
       rect:
         serializedVersion: 2
-        x: 485
+        x: 486
         y: 0
-        width: 21
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 19
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -275,12 +275,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Walk_6
       rect:
         serializedVersion: 2
-        x: 575
+        x: 576
         y: 0
-        width: 21
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 19
+        height: 46
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -297,12 +297,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Walk_7
       rect:
         serializedVersion: 2
-        x: 665
+        x: 666
         y: 0
-        width: 21
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 19
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -319,12 +319,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Walk_8
       rect:
         serializedVersion: 2
-        x: 753
+        x: 754
         y: 0
-        width: 24
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 22
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -341,12 +341,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Walk_9
       rect:
         serializedVersion: 2
-        x: 841
+        x: 842
         y: 0
-        width: 29
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 27
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -363,7 +363,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2fdcae7bb7f1ea64181a4680f8191804
     internalID: 0
     vertices: []
     indices: 
@@ -371,7 +371,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       EvilCreaturePortal-Flat-Walk_0: 4602933625239882578
       EvilCreaturePortal-Flat-Walk_1: 5013547600203708017

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Gemas : MonoBehaviour
 {
+    [Header("Score")]
+    [SerializeField] private int scoreValue;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player"))
@@ -13,7 +15,8 @@ public class Gemas : MonoBehaviour
             return;
         }
 
-        GameManager.Instance.AddScore(1);
+        GameManager.Instance.AddScore(scoreValue);
+        AudioManager.Instance.PlayCoin(transform, 1f);
         Destroy(gameObject);
     }
 }

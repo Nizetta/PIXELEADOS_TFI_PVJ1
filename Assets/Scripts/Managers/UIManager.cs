@@ -41,8 +41,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private AudioMixer mainAudioMixer;
 
 
-    //[Header("Player Reference")]
-    //[SerializeField] private HealthSystem healthSystemPlayer;
+    [Header("Player Reference")]
+    [SerializeField] private HealthSystem healthSystemPlayer;
 
     [Header("Auto Button Click Sound")]
     [SerializeField] private bool autoHookButtonSounds = true;
@@ -76,15 +76,17 @@ public class UIManager : MonoBehaviour
         {
             UpdateScoreHUD(GameManager.Instance.Score);
             HandleStateChanged(GameManager.Instance.State);
+            HandleHealthChanged(GameManager.Instance.CurrentHealth, GameManager.Instance.MaxHealth);
+            UpdateItemsHUD();
         }
 
         /*if  (healthSystemPlayer != null)
         {
             healthSystemPlayer.OnChangeHealthPlayer += UpdateHealthBar;
-        }
+        }*/
 
-        SetupResolutions();
-        */
+        //SetupResolutions();
+        
         LoadSettings();
     }
 
@@ -97,6 +99,13 @@ public class UIManager : MonoBehaviour
 
         GameManager.Instance.OnScoreChanged -= UpdateScoreHUD;
         GameManager.Instance.OnScoreChanged += UpdateScoreHUD;
+        
+        GameManager.Instance.OnHealthChanged -= HandleHealthChanged;
+        GameManager.Instance.OnHealthChanged += HandleHealthChanged;
+
+        GameManager.Instance.OnItemCollected -= HandleItemCollected;
+        GameManager.Instance.OnItemCollected += HandleItemCollected;
+
     }
 
     private void UnsubscribeFromGameManager()
@@ -105,6 +114,28 @@ public class UIManager : MonoBehaviour
 
         GameManager.Instance.OnStateChanged -= HandleStateChanged;
         GameManager.Instance.OnScoreChanged -= UpdateScoreHUD;
+        GameManager.Instance.OnHealthChanged -= HandleHealthChanged;
+        GameManager.Instance.OnItemCollected -= HandleItemCollected;
+    }
+
+    private void HandleHealthChanged(int currentHealth, int maxHealth)
+    {
+        float normalized = maxHealth > 0 ? Mathf.Clamp01((float)currentHealth / maxHealth) : 0f;
+        UpdateHealthBar(normalized);
+        Debug.Log("Cambio en salud");
+    }
+
+    private void HandleItemCollected(ItemData _)
+    {
+        UpdateItemsHUD();
+    }
+
+    private void UpdateItemsHUD()
+    {
+        if (scoreText == null) return;
+
+        int count = GameManager.Instance != null ? GameManager.Instance.Items.Count : 0;
+        scoreText.text = $"{count}";
     }
 
     private void HookButtonSounds()

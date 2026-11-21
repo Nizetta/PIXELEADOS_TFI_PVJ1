@@ -15,7 +15,7 @@ TagManager:
   - Ground
   - Player
   - Ladder
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -42,11 +42,14 @@ TagManager:
   - name: Sky
     uniqueID: 866207717
     locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
   - name: Ground
     uniqueID: 2051061273
     locked: 0
-  - name: Default
-    uniqueID: 0
+  - name: Player
+    uniqueID: 1721079221
     locked: 0
   m_RenderingLayers:
   - Default

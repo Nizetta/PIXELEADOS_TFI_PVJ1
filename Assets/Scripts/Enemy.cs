@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private Transform enemy;
+   /* [SerializeField] private Transform enemy;
     [SerializeField] private float radius = 2f;
     [SerializeField] private float speed= 4f;
     [SerializeField] private EnemyData enemyData;
@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Player"))
             return;
-
+        
         TryDamagePlayer(collision.gameObject);
     }
 
@@ -77,5 +77,6 @@ public class Enemy : MonoBehaviour
 
         int damage = enemyData != null ? enemyData.Damage : 10;
         inmunidad.TryTakeDamage(damage);
-    }
+    }*/
 }
+   
