@@ -276,6 +276,12 @@ public class PlayerController : MonoBehaviour
             {
                 flyingHealth.TakeDamage(attackDamage, transform);
             }
+
+            BossEnemyHealth bossHealth = hit.GetComponent<BossEnemyHealth>() ?? hit.GetComponentInParent<BossEnemyHealth>();
+            if (bossHealth != null && !bossHealth.IsDead && damagedTargets.Add(bossHealth))
+            {
+                bossHealth.TakeDamage(attackDamage, transform);
+            }
         }
     }
 
