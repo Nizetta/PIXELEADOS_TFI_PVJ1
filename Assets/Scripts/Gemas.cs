@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class Gemas : MonoBehaviour
 {
+    [Header("Rotation")]
+    [SerializeField] private float rotationSpeed = 100f;
+    private void Update()
+    {
+        transform.Rotate(0f, rotationSpeed * Time.deltaTime, 0f);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
@@ -17,8 +23,6 @@ public class Gemas : MonoBehaviour
         {
             AudioManager.Instance.PlayCoin(transform);
         }
-
         Destroy(gameObject);
-
     }
 }
