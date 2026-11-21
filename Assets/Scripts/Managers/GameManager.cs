@@ -116,12 +116,12 @@ public class GameManager : MonoBehaviour
         levelStartScore = Score;
         levelStartHealth = CurrentHealth;
         levelStartMaxHealth = MaxHealth;
-
         levelStartItems.Clear();
         levelStartItems.AddRange(items);
 
         hasLevelData = true;
     }
+
     private void SetState(GameState newState)
     {
         if (State == newState) return;
@@ -137,10 +137,8 @@ public class GameManager : MonoBehaviour
         Score = 0;
         MaxHealth = playerStats != null ? playerStats.MaxHealth : 100;
         CurrentHealth = MaxHealth;
-
         items.Clear();
         sessionStarted = true;
-
         OnScoreChanged?.Invoke(Score);
         OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
         OnItemCollected?.Invoke(null);
@@ -174,7 +172,6 @@ public class GameManager : MonoBehaviour
         Score = levelStartScore;
         MaxHealth = levelStartMaxHealth;
         CurrentHealth = levelStartHealth;
-
         items.Clear();
         items.AddRange(levelStartItems);
 

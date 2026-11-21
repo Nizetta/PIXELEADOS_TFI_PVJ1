@@ -107,8 +107,21 @@ public class EnemyAI : MonoBehaviour
     private void FixedUpdate()
     {
         if (isDead) return;
-
         switch (enemyType)
+        /*
+        Transform target = patrolPoints[currentPoint];
+        float direction = target.position.x - rb.position.x;
+
+        if (direction != 0) spriteRenderer.flipX = direction > 0;
+
+        Vector2 targetPosition = new Vector2(target.position.x, rb.position.y);
+        Vector2 newPosition = Vector2.MoveTowards(rb.position, targetPosition, enemyData.movementSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(newPosition);
+        bool isMoving = Mathf.Abs(target.position.x - rb.position.x) > 0.1f;
+
+        if (animator != null) animator.SetBool("IsMoving", isMoving);
+
+        if (!isMoving)*/
         {
             case EnemyType.Mushroom:
                 MoveMushroom();

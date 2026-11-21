@@ -90,7 +90,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -155,12 +155,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Attack1_0
       rect:
         serializedVersion: 2
-        x: 33
+        x: 34
         y: 0
-        width: 24
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 22
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Attack1_1
       rect:
         serializedVersion: 2
-        x: 123
+        x: 124
         y: 0
-        width: 25
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 23
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -199,12 +199,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Attack1_2
       rect:
         serializedVersion: 2
-        x: 213
+        x: 214
         y: 0
-        width: 30
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 28
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -221,12 +221,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Attack1_3
       rect:
         serializedVersion: 2
-        x: 304
+        x: 305
         y: 0
-        width: 33
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 31
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -243,12 +243,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Attack1_4
       rect:
         serializedVersion: 2
-        x: 395
+        x: 396
         y: 0
-        width: 35
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 33
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -265,12 +265,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Attack1_5
       rect:
         serializedVersion: 2
-        x: 485
+        x: 486
         y: 0
-        width: 35
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 33
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -287,12 +287,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Attack1_6
       rect:
         serializedVersion: 2
-        x: 575
+        x: 576
         y: 0
-        width: 34
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -309,12 +309,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Attack1_7
       rect:
         serializedVersion: 2
-        x: 665
+        x: 666
         y: 0
-        width: 35
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 33
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -331,12 +331,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Attack1_8
       rect:
         serializedVersion: 2
-        x: 719
+        x: 720
         y: 0
-        width: 65
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 63
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -353,12 +353,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Attack1_9
       rect:
         serializedVersion: 2
-        x: 814
+        x: 815
         y: 0
-        width: 55
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 53
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -375,12 +375,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Attack1_10
       rect:
         serializedVersion: 2
-        x: 906
+        x: 907
         y: 0
-        width: 42
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 40
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -397,12 +397,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Attack1_11
       rect:
         serializedVersion: 2
-        x: 1018
+        x: 1019
         y: 0
-        width: 23
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 21
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -419,12 +419,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Attack1_12
       rect:
         serializedVersion: 2
-        x: 1113
+        x: 1114
         y: 0
-        width: 22
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 20
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -441,12 +441,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Attack1_13
       rect:
         serializedVersion: 2
-        x: 1203
+        x: 1204
         y: 0
-        width: 24
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 22
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -463,7 +463,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5a5dfb592662be14fbf6fc7733c39585
     internalID: 0
     vertices: []
     indices: 
@@ -471,7 +471,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       EvilCreaturePortal-Flat-Attack1_0: -5467535900741448655
       EvilCreaturePortal-Flat-Attack1_1: -3630304507379534644

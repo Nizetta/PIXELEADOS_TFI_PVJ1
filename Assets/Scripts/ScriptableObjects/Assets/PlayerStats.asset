@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6606294dc5bfdc478122ab79e101e4a, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
-  maxHealth: 100
-  currentHealth: 60
+  baseMaxHealth: 100
   movementSpeed: 5
-  jumpForce: 14
-  currentScore: 0
-  checkpoint: {x: 0, y: 0}
+  jumpForce: 15
+  bonusMaxHealth: 0
+  bonusMovementSpeed: 0
+  hasSecondaryUpgrade: 0

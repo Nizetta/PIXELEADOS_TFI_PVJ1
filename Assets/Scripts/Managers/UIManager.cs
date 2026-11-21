@@ -43,8 +43,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private AudioMixer mainAudioMixer;
 
 
-    //[Header("Player Reference")]
-    //[SerializeField] private HealthSystem healthSystemPlayer;
+    [Header("Player Reference")]
+    [SerializeField] private HealthSystem healthSystemPlayer;
 
     [Header("Auto Button Click Sound")]
     [SerializeField] private bool autoHookButtonSounds = true;
@@ -72,20 +72,16 @@ public class UIManager : MonoBehaviour
             UpdateGemsCountHUD();
 
             HandleStateChanged(GameManager.Instance.State);
-
-            HandleHealthChanged(
-                GameManager.Instance.CurrentHealth,
-                GameManager.Instance.MaxHealth
-            );
+            HandleHealthChanged(GameManager.Instance.CurrentHealth, GameManager.Instance.MaxHealth);
         }
 
         /*if  (healthSystemPlayer != null)
         {
             healthSystemPlayer.OnChangeHealthPlayer += UpdateHealthBar;
-        }
+        }*/
 
-        SetupResolutions();
-        */
+        //SetupResolutions();
+        
         LoadSettings();
     }
 

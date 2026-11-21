@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -137,12 +137,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Idle_0
       rect:
         serializedVersion: 2
-        x: 33
+        x: 34
         y: 0
-        width: 24
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 22
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -159,12 +159,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Idle_1
       rect:
         serializedVersion: 2
-        x: 123
+        x: 124
         y: 0
-        width: 24
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 22
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -181,12 +181,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Idle_2
       rect:
         serializedVersion: 2
-        x: 213
+        x: 214
         y: 0
-        width: 24
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 22
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -203,12 +203,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Idle_3
       rect:
         serializedVersion: 2
-        x: 303
+        x: 304
         y: 0
-        width: 24
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 22
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -225,12 +225,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Idle_4
       rect:
         serializedVersion: 2
-        x: 393
+        x: 394
         y: 0
-        width: 24
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 22
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -247,12 +247,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Idle_5
       rect:
         serializedVersion: 2
-        x: 483
+        x: 484
         y: 0
-        width: 24
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 22
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -269,12 +269,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Idle_6
       rect:
         serializedVersion: 2
-        x: 573
+        x: 574
         y: 0
-        width: 24
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 22
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -291,12 +291,12 @@ TextureImporter:
       name: EvilCreaturePortal-Flat-Idle_7
       rect:
         serializedVersion: 2
-        x: 663
+        x: 664
         y: 0
-        width: 24
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 22
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -313,7 +313,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 90f3355be301b394e9953ff86c9122dd
     internalID: 0
     vertices: []
     indices: 
@@ -321,7 +321,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       EvilCreaturePortal-Flat-Idle_0: -8952036274920580993
       EvilCreaturePortal-Flat-Idle_1: -1423945313778052170

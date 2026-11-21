@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DamageSpike : MonoBehaviour
 {
-    [SerializeField] private int damage = 10;
+  /*  [SerializeField] private int damage = 10;
     [SerializeField] private LayerMask targetLayer;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -30,5 +30,5 @@ public class DamageSpike : MonoBehaviour
             Debug.Log($"Spike: el jugador recibió {damage} de daño.");
         }
     }
-
+   */
 }

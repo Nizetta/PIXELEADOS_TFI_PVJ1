@@ -4,6 +4,7 @@ public class Gemas : MonoBehaviour
 {
     [Header("Rotation")]
     [SerializeField] private float rotationSpeed = 100f;
+    [Header("Item Data")]
     [SerializeField] private ItemData itemData;
     private void Update()
     {
@@ -20,8 +21,8 @@ public class Gemas : MonoBehaviour
         }
         //GameManager.Instance.AddScore(1);
         GameManager.Instance.CollectItem(itemData);
+        AudioManager.Instance.PlayCoin(transform, 1f);
 
-        if (AudioManager.Instance != null) AudioManager.Instance.PlayCoin(transform);
         Destroy(gameObject);
     }
 }

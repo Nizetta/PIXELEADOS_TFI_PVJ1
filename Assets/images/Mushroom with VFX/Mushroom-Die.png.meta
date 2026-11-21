@@ -93,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -162,8 +162,8 @@ TextureImporter:
         y: 0
         width: 30
         height: 32
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -184,8 +184,8 @@ TextureImporter:
         y: 0
         width: 30
         height: 34
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -206,8 +206,8 @@ TextureImporter:
         y: 0
         width: 28
         height: 37
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -228,8 +228,8 @@ TextureImporter:
         y: 0
         width: 29
         height: 32
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -250,8 +250,8 @@ TextureImporter:
         y: 0
         width: 30
         height: 34
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -272,8 +272,8 @@ TextureImporter:
         y: 0
         width: 30
         height: 30
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -294,8 +294,8 @@ TextureImporter:
         y: 0
         width: 28
         height: 27
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -316,8 +316,8 @@ TextureImporter:
         y: 0
         width: 36
         height: 15
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -338,8 +338,8 @@ TextureImporter:
         y: 0
         width: 36
         height: 13
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -360,8 +360,8 @@ TextureImporter:
         y: 0
         width: 34
         height: 16
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -382,8 +382,8 @@ TextureImporter:
         y: 0
         width: 34
         height: 16
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -404,8 +404,8 @@ TextureImporter:
         y: 0
         width: 34
         height: 16
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -426,8 +426,8 @@ TextureImporter:
         y: 0
         width: 34
         height: 16
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -448,8 +448,8 @@ TextureImporter:
         y: 0
         width: 34
         height: 16
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -470,8 +470,8 @@ TextureImporter:
         y: 0
         width: 34
         height: 16
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -498,7 +498,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":70.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":1.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":2,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Mushroom-Die_0: 4880523274685937445
       Mushroom-Die_1: 6497299558051612606

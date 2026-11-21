@@ -11,6 +11,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float blinkInterval = 0.1f;
     [SerializeField] private float blinkAlpha = 0.25f;
+
     public int MaxHealth => maxHealth;
     public int CurrentHealth { get; private set; }
     public bool IsDead => CurrentHealth <= 0;
@@ -26,32 +27,18 @@ public class HealthSystem : MonoBehaviour
     private Coroutine blinkCoroutine;
     private Color originalColor;
 
-
     private void Awake()
     {
-        if (playerStats != null)
-        {
-            maxHealth = playerStats.MaxHealth;
-        }
-        else
-        {
-            Debug.LogError("PlayerStats no está asignado en HealthSystem.");
-        }
-        if (spriteRenderer == null)
-            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-
-        if (spriteRenderer != null)
-            originalColor = spriteRenderer.color;
+        if (playerStats != null) maxHealth = playerStats.MaxHealth;
+        else Debug.LogError("PlayerStats no estï¿½ asignado en HealthSystem.");
+        if (spriteRenderer == null) spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (spriteRenderer != null) originalColor = spriteRenderer.color;
 
         blinkInterval = Mathf.Max(0.02f, blinkInterval);
         blinkAlpha = Mathf.Clamp01(blinkAlpha);
-
         int initialHealth = maxHealth;
 
-        if (GameManager.Instance != null)
-        {
-            initialHealth = GameManager.Instance.GetSessionHealth(maxHealth);
-        }
+        if (GameManager.Instance != null) initialHealth = GameManager.Instance.GetSessionHealth(maxHealth);
 
         SetHealth(initialHealth, notifyManager: true);
     }
@@ -195,11 +182,7 @@ public class HealthSystem : MonoBehaviour
         int previousHealth = CurrentHealth;
         CurrentHealth = Mathf.Clamp(value, 0, maxHealth);
         NotifyHealthChanged(previousHealth);
-
-        if (notifyManager)
-        {
-            GameManager.Instance?.ReportHealth(CurrentHealth, maxHealth);
-        }
+        if (notifyManager) GameManager.Instance?.ReportHealth(CurrentHealth, maxHealth);
     }
 
     private void NotifyHealthChanged(int previousHealth)

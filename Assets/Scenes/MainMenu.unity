@@ -459,11 +459,25 @@ MonoBehaviour:
   victoryMusic: {fileID: 8300000, guid: 2dea7d81ac242034eacfdc4a91034be4, type: 3}
   gameOverMusic: {fileID: 8300000, guid: b4ecf1635d5cb154eaa908c2778b06af, type: 3}
   clickClip: {fileID: 8300000, guid: 7724a3e7f6dc4a0418fa69ae5ae4f045, type: 3}
-  potionClip: []
+  potionClip:
+  - {fileID: 8300000, guid: 79f242df7b0e18e4aa7c753fe2c26647, type: 3}
+  - {fileID: 8300000, guid: d08367e4dc468e84cae0f128260ed313, type: 3}
+  - {fileID: 8300000, guid: d19531d2e7c267a42911b2239532fd71, type: 3}
+  - {fileID: 8300000, guid: 4324ec3fec41aa949b0fde6dc5c87fb8, type: 3}
   coinClip:
-  - {fileID: 8300000, guid: 7724a3e7f6dc4a0418fa69ae5ae4f045, type: 3}
-  hitClip: []
-  playerHurtClip: []
+  - {fileID: 8300000, guid: 79f242df7b0e18e4aa7c753fe2c26647, type: 3}
+  - {fileID: 8300000, guid: d08367e4dc468e84cae0f128260ed313, type: 3}
+  - {fileID: 8300000, guid: d19531d2e7c267a42911b2239532fd71, type: 3}
+  - {fileID: 8300000, guid: 4324ec3fec41aa949b0fde6dc5c87fb8, type: 3}
+  hitClip:
+  - {fileID: 8300000, guid: 8c5dbf24b8e368a448e8258b4cab292c, type: 3}
+  - {fileID: 8300000, guid: 3c1d41e0e4bd773499f487de2a21879f, type: 3}
+  - {fileID: 8300000, guid: 1bda77448774c4c4fb5ce675a75f4576, type: 3}
+  - {fileID: 8300000, guid: de45d850863a9db4eba602dbff290cc0, type: 3}
+  playerHurtClip:
+  - {fileID: 8300000, guid: 489378fbec18e5648a0fe486137183eb, type: 3}
+  - {fileID: 8300000, guid: 4f7feae6389f73948b9abc2c2716c2d5, type: 3}
+  - {fileID: 8300000, guid: 6520d2efa03e8a74382c7b72a7f1c273, type: 3}
   audioMixer: {fileID: 24100000, guid: 6de7f8e156012314eb152236c551b29c, type: 2}
   musicParam: Music
   musicFadeDuration: 1.5
@@ -2030,7 +2044,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -93, y: -160}
+  m_AnchoredPosition: {x: 290, y: -117}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1243959133
@@ -2053,7 +2067,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Nombre
+  m_text: Aventura con Finn
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d0e775df10365c04786fce107ab04cce, type: 2}
   m_sharedMaterial: {fileID: 5156448681694769461, guid: d0e775df10365c04786fce107ab04cce, type: 2}
@@ -2119,7 +2133,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -670.04987, w: -109.003296}
+  m_margin: {x: -588.1516, y: 0, z: -670.04987, w: -313.86487}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2345,7 +2359,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 2051061273
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -2959,7 +2973,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 866207717
-  m_SortingLayer: -2
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -7541,6 +7555,7 @@ MonoBehaviour:
   victoryScoreText: {fileID: 0}
   gameOverScoreText: {fileID: 0}
   mainAudioMixer: {fileID: 24100000, guid: 6de7f8e156012314eb152236c551b29c, type: 2}
+  healthSystemPlayer: {fileID: 0}
   autoHookButtonSounds: 1
 --- !u!224 &1464239530
 RectTransform:
@@ -7902,6 +7917,98 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6830449916353253388, guid: bec06fc2bacab93449d3adc5df29cc55, type: 3}
   m_PrefabInstance: {fileID: 1121164810549700679}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1861482335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1861482337}
+  - component: {fileID: 1861482336}
+  m_Layer: 0
+  m_Name: FinnSprite_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &1861482336
+SpriteRenderer:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861482335}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: -1734298994132575547, guid: 4f8a38c8b6eea784abca64101652a28f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+  m_BlendShapeWeights: []
+--- !u!4 &1861482337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861482335}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.7, y: -1.97, z: 0}
+  m_LocalScale: {x: 3.585449, y: 3.162655, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1913285707
 GameObject:
   m_ObjectHideFlags: 0
@@ -8352,3 +8459,4 @@ SceneRoots:
   - {fileID: 1824994148}
   - {fileID: 310256417}
   - {fileID: 1760649609}
+  - {fileID: 1861482337}
