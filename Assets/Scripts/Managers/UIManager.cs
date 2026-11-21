@@ -122,6 +122,7 @@ public class UIManager : MonoBehaviour
     {
         float normalized = maxHealth > 0 ? Mathf.Clamp01((float)currentHealth / maxHealth) : 0f;
         UpdateHealthBar(normalized);
+        Debug.Log("Cambio en salud");
     }
 
     private void HandleItemCollected(ItemData _)

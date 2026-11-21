@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12fb769025dec4e43951979d8266db9f, type: 3}
+  m_Name: MushroomStats
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeEnemyStats
+  maxHealth: 40
+  deathDestroyDelay: 0.8
+  moveSpeed: 2.5
+  idleDuration: 1
+  waypointReachThreshold: 0.15
+  wallCheckDistance: 0.25
+  edgeCheckDistance: 0.35
+  detectionRadius: 3.5
+  attackRange: 1.1
+  attackDamage: 5
+  attackCooldown: 1.2
+  attackDuration: 0.45
+  knockbackForce: {x: 4, y: 2.5}
+  hurtDuration: 0.25

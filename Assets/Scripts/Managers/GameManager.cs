@@ -146,8 +146,8 @@ public class GameManager : MonoBehaviour
 
     private void BeginSession()
     {
-        Score = playerStats != null ? playerStats.CurrentScore : 0;
-        MaxHealth = playerStats != null ? playerStats.CurrentHealth : 100;
+        Score = 0;
+        MaxHealth = playerStats != null ? playerStats.MaxHealth : 100;
         CurrentHealth = MaxHealth;
                 
         items.Clear();

@@ -78,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -143,12 +143,12 @@ TextureImporter:
       name: Skeleton_01_White_Walk_0
       rect:
         serializedVersion: 2
-        x: 35
+        x: 36
         y: 0
-        width: 33
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 31
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -165,12 +165,12 @@ TextureImporter:
       name: Skeleton_01_White_Walk_1
       rect:
         serializedVersion: 2
-        x: 130
+        x: 131
         y: 0
-        width: 34
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 46
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -187,12 +187,12 @@ TextureImporter:
       name: Skeleton_01_White_Walk_2
       rect:
         serializedVersion: 2
-        x: 226
+        x: 227
         y: 0
-        width: 35
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 33
+        height: 47
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -209,12 +209,12 @@ TextureImporter:
       name: Skeleton_01_White_Walk_3
       rect:
         serializedVersion: 2
-        x: 321
+        x: 322
         y: 0
-        width: 37
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 35
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -231,12 +231,12 @@ TextureImporter:
       name: Skeleton_01_White_Walk_4
       rect:
         serializedVersion: 2
-        x: 416
+        x: 417
         y: 0
-        width: 38
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 36
+        height: 46
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -253,12 +253,12 @@ TextureImporter:
       name: Skeleton_01_White_Walk_5
       rect:
         serializedVersion: 2
-        x: 510
+        x: 511
         y: 0
-        width: 41
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 39
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -275,12 +275,12 @@ TextureImporter:
       name: Skeleton_01_White_Walk_6
       rect:
         serializedVersion: 2
-        x: 608
+        x: 609
         y: 0
-        width: 38
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 36
+        height: 46
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -297,12 +297,12 @@ TextureImporter:
       name: Skeleton_01_White_Walk_7
       rect:
         serializedVersion: 2
-        x: 705
+        x: 706
         y: 0
-        width: 37
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 35
+        height: 47
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -319,12 +319,12 @@ TextureImporter:
       name: Skeleton_01_White_Walk_8
       rect:
         serializedVersion: 2
-        x: 802
+        x: 803
         y: 0
-        width: 35
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 33
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -341,12 +341,12 @@ TextureImporter:
       name: Skeleton_01_White_Walk_9
       rect:
         serializedVersion: 2
-        x: 898
+        x: 899
         y: 0
-        width: 34
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 46
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -363,7 +363,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 365423b96e8f7f747913334605592e06
     internalID: 0
     vertices: []
     indices: 
@@ -371,7 +371,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Skeleton_01_White_Walk_0: 5818877937026341535
       Skeleton_01_White_Walk_1: 5246328315798846087

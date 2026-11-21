@@ -459,10 +459,25 @@ MonoBehaviour:
   victoryMusic: {fileID: 8300000, guid: 2dea7d81ac242034eacfdc4a91034be4, type: 3}
   gameOverMusic: {fileID: 8300000, guid: b4ecf1635d5cb154eaa908c2778b06af, type: 3}
   clickClip: {fileID: 8300000, guid: 7724a3e7f6dc4a0418fa69ae5ae4f045, type: 3}
-  potionClip: []
-  coinClip: []
-  hitClip: []
-  playerHurtClip: []
+  potionClip:
+  - {fileID: 8300000, guid: 79f242df7b0e18e4aa7c753fe2c26647, type: 3}
+  - {fileID: 8300000, guid: d08367e4dc468e84cae0f128260ed313, type: 3}
+  - {fileID: 8300000, guid: d19531d2e7c267a42911b2239532fd71, type: 3}
+  - {fileID: 8300000, guid: 4324ec3fec41aa949b0fde6dc5c87fb8, type: 3}
+  coinClip:
+  - {fileID: 8300000, guid: 79f242df7b0e18e4aa7c753fe2c26647, type: 3}
+  - {fileID: 8300000, guid: d08367e4dc468e84cae0f128260ed313, type: 3}
+  - {fileID: 8300000, guid: d19531d2e7c267a42911b2239532fd71, type: 3}
+  - {fileID: 8300000, guid: 4324ec3fec41aa949b0fde6dc5c87fb8, type: 3}
+  hitClip:
+  - {fileID: 8300000, guid: 8c5dbf24b8e368a448e8258b4cab292c, type: 3}
+  - {fileID: 8300000, guid: 3c1d41e0e4bd773499f487de2a21879f, type: 3}
+  - {fileID: 8300000, guid: 1bda77448774c4c4fb5ce675a75f4576, type: 3}
+  - {fileID: 8300000, guid: de45d850863a9db4eba602dbff290cc0, type: 3}
+  playerHurtClip:
+  - {fileID: 8300000, guid: 489378fbec18e5648a0fe486137183eb, type: 3}
+  - {fileID: 8300000, guid: 4f7feae6389f73948b9abc2c2716c2d5, type: 3}
+  - {fileID: 8300000, guid: 6520d2efa03e8a74382c7b72a7f1c273, type: 3}
   audioMixer: {fileID: 24100000, guid: 6de7f8e156012314eb152236c551b29c, type: 2}
   musicParam: Music
   musicFadeDuration: 1.5
@@ -2344,7 +2359,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 2051061273
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -2958,7 +2973,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 866207717
-  m_SortingLayer: -2
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
