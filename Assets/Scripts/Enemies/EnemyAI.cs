@@ -28,9 +28,12 @@ public class EnemyAI : MonoBehaviour
     [Header("Attack Animation")]
     [SerializeField] private float chargeDuration = 0.6f;
     [SerializeField] private float attackDuration = 0.4f;
-
+    [Header("Bat Settings")]
+    [SerializeField] private bool startSleeping = false;
+    [SerializeField] private float wakeUpDuration = 0.8f;
+    [SerializeField] private float batAttackDuration = 0.6f;
+    [SerializeField] private float batDeathDuration = 0.8f;
     private bool isAttacking;
-
     private float nextAttackTime;
     private Transform player;
     [Header("Physics")]
@@ -43,11 +46,13 @@ public class EnemyAI : MonoBehaviour
     private bool isDead;
     private bool movingRight = false;
     private float initialY;
+    private bool isAwake = true;
+private bool isWakingUp;
     private void Awake()
     {
-        if (rb == null) rb = GetComponent<Rigidbody2D>();
-        if (animator == null) animator = GetComponent<Animator>();
-        if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         initialY = transform.position.y;
 
         if (enemyData == null)
@@ -55,17 +60,48 @@ public class EnemyAI : MonoBehaviour
             Debug.LogError("EnemyData no está asignado en " + gameObject.name);
         }
     }
+    private IEnumerator WakeUpBat()
+    {
+        isWakingUp = true;
+
+        if (animator != null) animator.SetTrigger("Bat_wakeup");
+
+        yield return new WaitForSeconds(wakeUpDuration);
+
+        isAwake = true;
+        isWakingUp = false;
+    }
+private IEnumerator AttackBat()
+    {
+        isAttacking = true;
+
+        if (animator != null) animator.SetBool("IsAttacking", true);
+
+        yield return new WaitForSeconds(batAttackDuration);
+
+        if (animator != null) animator.SetBool("IsAttacking", false);
+
+        isAttacking = false;
+    }
     private void Start()
     {
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
 
-        if (playerObject != null)
+        if (playerObject != null) player = playerObject.transform;
+        else Debug.LogWarning("No se encontró un objeto con Tag Player.");
+
+        if (enemyType == EnemyType.Bat && animator != null)
         {
-            player = playerObject.transform;
-        }
-        else
-        {
-            Debug.LogWarning("No se encontró un objeto con Tag Player.");
+            if (startSleeping)
+            {
+                isAwake = false;
+                animator.Play("Bat_sleep");
+            }
+            else
+            {
+                isAwake = true;
+                animator.Play("Bat_run");
+            }
         }
     }
     private void FixedUpdate()
@@ -84,6 +120,7 @@ public class EnemyAI : MonoBehaviour
                 break;
 
             case EnemyType.Bat:
+                MoveBat();
                 break;
         }
     }
@@ -152,6 +189,38 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
+    private void MoveBat()
+    {
+        if (leftPoint == null || rightPoint == null) return;
+
+        float movementSpeed = enemyData != null ? enemyData.MovementSpeed : speed;
+
+        bool playerDetected = player != null && enemyData != null && Vector2.Distance(transform.position, player.position) <= enemyData.DetectionRadius;
+
+        if (playerDetected)
+        { 
+            Vector2 direction = ((Vector2)player.position - rb.position).normalized;
+
+            rb.MovePosition(rb.position + direction * movementSpeed * Time.fixedDeltaTime);
+
+            if (spriteRenderer != null) spriteRenderer.flipX = direction.x > 0;
+        }
+        else
+        {
+            float direction = movingRight ? 1f : -1f;
+
+            Vector2 newPosition = rb.position;
+            newPosition.x += direction * movementSpeed * Time.fixedDeltaTime;
+            float verticalMovement = Mathf.Sin(Time.time * verticalFrequency) * verticalAmplitude;
+            newPosition.y = initialY + verticalMovement;
+
+            rb.MovePosition(newPosition);
+
+            if (!movingRight && rb.position.x <= leftPoint.position.x) movingRight = true;
+            else if (movingRight && rb.position.x >= rightPoint.position.x) movingRight = false;
+            if (spriteRenderer != null) spriteRenderer.flipX = movingRight;
+        }
+    }
     private void FacePlayer()
     {
         if (player == null) return;
@@ -206,6 +275,13 @@ public class EnemyAI : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (isDead || !collision.gameObject.CompareTag("Player")) return;
+        if (enemyType == EnemyType.Mosquito)
+        {
+            Inmune immunity = collision.gameObject.GetComponent<Inmune>();
+
+            if (immunity != null && enemyData != null) immunity.TryTakeDamage(enemyData.Damage);
+            return;
+        }
         TryStompOrDamage(collision);
     }
 
@@ -240,6 +316,7 @@ public class EnemyAI : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
+        StopAllCoroutines();
 
         if (GameManager.Instance != null && enemyData != null) GameManager.Instance.AddScore(enemyData.ScoreValue);
 
