@@ -1811,9 +1811,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.0013531799
-    width: 0.99923843
-    height: 0.99594045
+    y: 0
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -7535,6 +7535,8 @@ MonoBehaviour:
   sfxSlider: {fileID: 1974676149}
   qualityDropdown: {fileID: 1052770138}
   scoreText: {fileID: 0}
+  gemsText: {fileID: 0}
+  gemsIcon: {fileID: 0}
   healthSlider: {fileID: 0}
   victoryScoreText: {fileID: 0}
   gameOverScoreText: {fileID: 0}
@@ -7813,6 +7815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 198195a3277bbeb4faa08df980a4234a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  playerStats: {fileID: 11400000, guid: 1926bc20dd9bed845930b5d62b23441a, type: 2}
   mainMenuSceneName: MainMenu
   levelSceneName:
   - Level01

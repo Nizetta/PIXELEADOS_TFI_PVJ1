@@ -782,6 +782,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcffb998ab8ea194a85e592a9563d574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
+  rotationSpeed: 100
+  itemData: {fileID: 0}
 --- !u!95 &82371012
 Animator:
   serializedVersion: 7
@@ -24802,6 +24804,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcffb998ab8ea194a85e592a9563d574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
+  rotationSpeed: 100
+  itemData: {fileID: 0}
 --- !u!95 &201509467
 Animator:
   serializedVersion: 7
@@ -25462,10 +25466,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementPlayer
   playerStats: {fileID: 11400000, guid: 1926bc20dd9bed845930b5d62b23441a, type: 2}
-  distanciaRaycast: 0.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  groundCheckHeight: 0.05
 --- !u!95 &281314002
 Animator:
   serializedVersion: 7
@@ -28933,6 +28937,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcffb998ab8ea194a85e592a9563d574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
+  rotationSpeed: 100
+  itemData: {fileID: 0}
 --- !u!95 &696543950
 Animator:
   serializedVersion: 7
@@ -29269,6 +29275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcffb998ab8ea194a85e592a9563d574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
+  rotationSpeed: 100
+  itemData: {fileID: 0}
 --- !u!95 &710185999
 Animator:
   serializedVersion: 7
@@ -55757,6 +55765,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcffb998ab8ea194a85e592a9563d574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
+  rotationSpeed: 100
+  itemData: {fileID: 0}
 --- !u!95 &938231141
 Animator:
   serializedVersion: 7
@@ -57424,6 +57434,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcffb998ab8ea194a85e592a9563d574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
+  rotationSpeed: 100
+  itemData: {fileID: 0}
 --- !u!95 &1069044382
 Animator:
   serializedVersion: 7
@@ -59065,6 +59077,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcffb998ab8ea194a85e592a9563d574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
+  rotationSpeed: 100
+  itemData: {fileID: 0}
 --- !u!95 &1192748235
 Animator:
   serializedVersion: 7
@@ -59696,6 +59710,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcffb998ab8ea194a85e592a9563d574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
+  rotationSpeed: 100
+  itemData: {fileID: 0}
 --- !u!95 &1231930598
 Animator:
   serializedVersion: 7
@@ -60552,13 +60568,85 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 725050281377487419, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 158
+      objectReference: {fileID: 0}
+    - target: {fileID: 725050281377487419, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 822
+      objectReference: {fileID: 0}
+    - target: {fileID: 725050281377487419, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 434
+      objectReference: {fileID: 0}
     - target: {fileID: 1026539703516065636, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336878346650848829, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336878346650848829, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336878346650848829, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336878346650848829, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336878346650848829, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 274
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336878346650848829, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 464
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_fontSize
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_isOrthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4641980994458476061, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050845688574704835, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5702971669406458382, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
       propertyPath: m_Pivot.x
@@ -60640,9 +60728,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6695509175136642060, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_text
+      value: Score
+      objectReference: {fileID: 0}
+    - target: {fileID: 6695509175136642060, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_margin.z
+      value: 165.12436
+      objectReference: {fileID: 0}
     - target: {fileID: 7484092924164057073, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8494451134983141473, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 695.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8494451134983141473, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 436
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -61332,6 +61436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcffb998ab8ea194a85e592a9563d574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
+  rotationSpeed: 100
+  itemData: {fileID: 0}
 --- !u!95 &1468350301
 Animator:
   serializedVersion: 7
@@ -62304,6 +62410,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcffb998ab8ea194a85e592a9563d574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
+  rotationSpeed: 100
+  itemData: {fileID: 0}
 --- !u!95 &1540136424
 Animator:
   serializedVersion: 7
@@ -62716,6 +62824,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcffb998ab8ea194a85e592a9563d574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
+  rotationSpeed: 100
+  itemData: {fileID: 0}
 --- !u!95 &1574817117
 Animator:
   serializedVersion: 7
@@ -67595,6 +67705,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcffb998ab8ea194a85e592a9563d574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
+  rotationSpeed: 100
+  itemData: {fileID: 0}
 --- !u!1001 &2053454962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67835,6 +67947,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcffb998ab8ea194a85e592a9563d574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
+  rotationSpeed: 100
+  itemData: {fileID: 0}
 --- !u!95 &2076944231
 Animator:
   serializedVersion: 7
@@ -68098,6 +68212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcffb998ab8ea194a85e592a9563d574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
+  rotationSpeed: 100
+  itemData: {fileID: 0}
 --- !u!95 &2090929226
 Animator:
   serializedVersion: 7

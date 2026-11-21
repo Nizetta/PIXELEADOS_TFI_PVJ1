@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [Header("Game Data")]
+    [SerializeField] private PlayerStats playerStats;
     public GameState State { get; private set; } = GameState.Start;
     public int Score { get; private set; }
     public int CurrentHealth { get; private set; }
@@ -103,6 +104,10 @@ public class GameManager : MonoBehaviour
         else
         {
             if (!sessionStarted) BeginSession();
+            CurrentHealth = playerStats.CurrentHealth;
+            MaxHealth = playerStats.MaxHealth;
+
+            OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
             SetState(GameState.Playing);
             Debug.Log($"State actual: {State}");
         }
@@ -121,12 +126,19 @@ public class GameManager : MonoBehaviour
 
     private void BeginSession()
     {
+        if (playerStats == null)
+        {
+            Debug.LogError("PlayerStats no está asignado en GameManager.");
+            return;
+        }
+        playerStats.ResetStats();
         Score = 0;
-        CurrentHealth = 100;
-        MaxHealth = 100;
+        CurrentHealth = playerStats.CurrentHealth; ;
+        MaxHealth = playerStats.MaxHealth;
         items.Clear();
         sessionStarted = true;
         OnScoreChanged?.Invoke(Score);
+        OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
     }
 
     public void Paused()

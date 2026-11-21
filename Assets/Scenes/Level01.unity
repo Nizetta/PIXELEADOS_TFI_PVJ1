@@ -148,7 +148,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 74.91, y: 17.07, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 914306974}
@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
   rotationSpeed: 350
+  itemData: {fileID: 11400000, guid: fa2f3617d4c26704f93457f27d71f921, type: 2}
 --- !u!70 &7580799
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -985,7 +986,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 49.27, y: 7.66, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 914306974}
@@ -1100,6 +1101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
   rotationSpeed: 350
+  itemData: {fileID: 11400000, guid: fa2f3617d4c26704f93457f27d71f921, type: 2}
 --- !u!1001 &49871199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2325,7 +2327,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 88.8, y: 36, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 914306974}
@@ -2403,6 +2405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
   rotationSpeed: 350
+  itemData: {fileID: 11400000, guid: fa2f3617d4c26704f93457f27d71f921, type: 2}
 --- !u!70 &139680253
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -7414,7 +7417,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 104.16, y: 13.98, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 914306974}
@@ -7529,6 +7532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
   rotationSpeed: 350
+  itemData: {fileID: 11400000, guid: fa2f3617d4c26704f93457f27d71f921, type: 2}
 --- !u!1001 &310966487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7730,6 +7734,7 @@ Transform:
   - {fileID: 1160695581}
   - {fileID: 541698515}
   - {fileID: 2063118529}
+  - {fileID: 1059932083}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &321601246
@@ -38901,7 +38906,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 83.14, y: 4.65, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 914306974}
@@ -39016,6 +39021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
   rotationSpeed: 350
+  itemData: {fileID: 11400000, guid: fa2f3617d4c26704f93457f27d71f921, type: 2}
 --- !u!1001 &422409337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40091,12 +40097,152 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 725050281377487419, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 725050281377487419, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 725050281377487419, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 725050281377487419, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 725050281377487419, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 158
+      objectReference: {fileID: 0}
+    - target: {fileID: 725050281377487419, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 725050281377487419, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 822
+      objectReference: {fileID: 0}
+    - target: {fileID: 725050281377487419, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 434
+      objectReference: {fileID: 0}
     - target: {fileID: 1026539703516065636, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2336878346650848829, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336878346650848829, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336878346650848829, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336878346650848829, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336878346650848829, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 274
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336878346650848829, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 464
+      objectReference: {fileID: 0}
     - target: {fileID: 2479445521216531996, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_text
+      value: x0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_margin.w
+      value: -22.60345
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_margin.x
+      value: -3.390789
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_margin.y
+      value: -32.774883
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_fontStyle
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_isOrthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_overrideHtmlColors
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_enableVertexGradient
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4641980994458476061, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
@@ -40195,15 +40341,66 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6695509175136642060, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_text
+      value: Score
+      objectReference: {fileID: 0}
+    - target: {fileID: 6695509175136642060, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_margin.z
+      value: 166.67609
+      objectReference: {fileID: 0}
     - target: {fileID: 7484092924164057073, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8494451134983141473, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8494451134983141473, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8494451134983141473, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8494451134983141473, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 695.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8494451134983141473, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 436
+      objectReference: {fileID: 0}
+    - target: {fileID: 8494451134983141473, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584271724188523863, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: gemsIcon
+      value: 
+      objectReference: {fileID: 1059915994}
+    - target: {fileID: 8584271724188523863, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: gemsText
+      value: 
+      objectReference: {fileID: 491391426}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+--- !u!114 &491391426 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+  m_PrefabInstance: {fileID: 491391425}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &492014812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43429,7 +43626,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 9.57, y: -4.26, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 914306974}
@@ -43507,6 +43704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
   rotationSpeed: 350
+  itemData: {fileID: 11400000, guid: fa2f3617d4c26704f93457f27d71f921, type: 2}
 --- !u!70 &707821234
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -43858,7 +44056,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 21.23, y: 0.54, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 914306974}
@@ -43936,6 +44134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
   rotationSpeed: 350
+  itemData: {fileID: 11400000, guid: fa2f3617d4c26704f93457f27d71f921, type: 2}
 --- !u!70 &725065783
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -47057,7 +47256,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 56.36, y: 10.67, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 914306974}
@@ -47172,6 +47371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
   rotationSpeed: 350
+  itemData: {fileID: 11400000, guid: fa2f3617d4c26704f93457f27d71f921, type: 2}
 --- !u!1 &914306973
 GameObject:
   m_ObjectHideFlags: 0
@@ -48404,7 +48604,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 41.51, y: -2.89, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 914306974}
@@ -48519,6 +48719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
   rotationSpeed: 350
+  itemData: {fileID: 11400000, guid: fa2f3617d4c26704f93457f27d71f921, type: 2}
 --- !u!1001 &1009566795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49355,6 +49556,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1059915994 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7302808199297518771, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+  m_PrefabInstance: {fileID: 491391425}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &1059932082
 GameObject:
   m_ObjectHideFlags: 0
@@ -49379,14 +49591,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059932082}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 66.97107, y: 39.60807, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 39.27912, y: 39.1712, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 724549541}
   - {fileID: 728082963}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 314339939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1064936897
 PrefabInstance:
@@ -49736,13 +49948,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089100917}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.35977, y: -1.2689, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -86.28715, y: -28.74857, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 217144967}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1263863265}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1094179377
 GameObject:
@@ -53049,7 +53261,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 64.66, y: 13.91, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 914306974}
@@ -53127,6 +53339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
   rotationSpeed: 350
+  itemData: {fileID: 11400000, guid: fa2f3617d4c26704f93457f27d71f921, type: 2}
 --- !u!70 &1235419092
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -53629,6 +53842,7 @@ Transform:
   - {fileID: 1346251422}
   - {fileID: 1607074605}
   - {fileID: 887053397}
+  - {fileID: 1089100918}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1271955990
@@ -54186,7 +54400,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.73238, y: -3.25904, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 914306974}
@@ -54204,6 +54418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
   rotationSpeed: 350
+  itemData: {fileID: 11400000, guid: fa2f3617d4c26704f93457f27d71f921, type: 2}
 --- !u!70 &1290041888
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -141781,7 +141996,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6.53, y: 1.05, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 914306974}
@@ -141859,6 +142074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
   rotationSpeed: 350
+  itemData: {fileID: 11400000, guid: fa2f3617d4c26704f93457f27d71f921, type: 2}
 --- !u!70 &1473728870
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -143603,7 +143819,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 37.27, y: 4.96, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 914306974}
@@ -143681,6 +143897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
   rotationSpeed: 350
+  itemData: {fileID: 11400000, guid: fa2f3617d4c26704f93457f27d71f921, type: 2}
 --- !u!70 &1558043473
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -144060,7 +144277,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 94.79, y: 27.82, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 914306974}
@@ -144138,6 +144355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
   rotationSpeed: 350
+  itemData: {fileID: 11400000, guid: fa2f3617d4c26704f93457f27d71f921, type: 2}
 --- !u!70 &1576121508
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -146472,7 +146690,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 104.73, y: 24.06, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 914306974}
@@ -146587,6 +146805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gemas
   rotationSpeed: 350
+  itemData: {fileID: 11400000, guid: fa2f3617d4c26704f93457f27d71f921, type: 2}
 --- !u!1 &1695873738
 GameObject:
   m_ObjectHideFlags: 0
@@ -155186,10 +155405,8 @@ SceneRoots:
   - {fileID: 491391425}
   - {fileID: 1259778505}
   - {fileID: 1111158427}
-  - {fileID: 1089100918}
   - {fileID: 83059001}
   - {fileID: 1054285893}
   - {fileID: 914306974}
   - {fileID: 992264130}
   - {fileID: 314339939}
-  - {fileID: 1059932083}

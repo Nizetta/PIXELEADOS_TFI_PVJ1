@@ -32,14 +32,24 @@ public class Inmune : MonoBehaviour
 
     public bool TryTakeDamage(int amount)
     {
-        if (playerStats == null || isImmune)
-            return false;
+        if (playerStats == null || isImmune || amount<=0) return false;
 
         bool damageApplied = playerStats.TakeDamage(amount);
 
         if (damageApplied)
         {
             Debug.Log($"Vida del jugador: {playerStats.CurrentHealth}/{playerStats.MaxHealth}");
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.ReportDamage(amount, playerStats.CurrentHealth, playerStats.MaxHealth);
+
+                if (playerStats.CurrentHealth <= 0)
+                {
+                    GameManager.Instance.NotifyPlayerDead();
+                    return true;
+                }
+            }
+
             if (immunityCoroutine != null)
                 StopCoroutine(immunityCoroutine);
 

@@ -33,6 +33,8 @@ public class UIManager : MonoBehaviour
 
     [Header("HUD Elements")]
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI gemsText;
+    [SerializeField] private Image gemsIcon;
     [SerializeField] private Slider healthSlider;
     [SerializeField] private TextMeshProUGUI victoryScoreText;
     [SerializeField] private TextMeshProUGUI gameOverScoreText;
@@ -75,7 +77,9 @@ public class UIManager : MonoBehaviour
         if (GameManager.Instance != null)
         {
             UpdateScoreHUD(GameManager.Instance.Score);
+            UpdateGemsCountHUD();
             HandleStateChanged(GameManager.Instance.State);
+            UpdateHealthBar(GameManager.Instance.CurrentHealth,GameManager.Instance.MaxHealth);
         }
 
         /*if  (healthSystemPlayer != null)
@@ -97,6 +101,12 @@ public class UIManager : MonoBehaviour
 
         GameManager.Instance.OnScoreChanged -= UpdateScoreHUD;
         GameManager.Instance.OnScoreChanged += UpdateScoreHUD;
+
+        GameManager.Instance.OnItemCollected -= UpdateGemsHUD;
+        GameManager.Instance.OnItemCollected += UpdateGemsHUD;
+
+        GameManager.Instance.OnHealthChanged -= UpdateHealthBar;
+        GameManager.Instance.OnHealthChanged += UpdateHealthBar;
     }
 
     private void UnsubscribeFromGameManager()
@@ -105,6 +115,8 @@ public class UIManager : MonoBehaviour
 
         GameManager.Instance.OnStateChanged -= HandleStateChanged;
         GameManager.Instance.OnScoreChanged -= UpdateScoreHUD;
+        GameManager.Instance.OnItemCollected -= UpdateGemsHUD;
+        GameManager.Instance.OnHealthChanged -= UpdateHealthBar;
     }
 
     private void HookButtonSounds()
@@ -223,15 +235,26 @@ public class UIManager : MonoBehaviour
         int finalScore = GameManager.Instance != null ? GameManager.Instance.Score : 0;
         targetText.text = $"Puntaje final: {finalScore}";
     }
-
-    private void UpdateHealthBar(float healthNormalized)
+    private void UpdateGemsHUD(ItemData item)
     {
-        if (healthSlider != null)
+        UpdateGemsCountHUD();
+    }
+    private void UpdateGemsCountHUD()
+    {
+        if (gemsText != null && GameManager.Instance != null)
         {
-            healthSlider.value = healthNormalized;
+            gemsText.text = $"x{GameManager.Instance.Items.Count}";
         }
     }
 
+    private void UpdateHealthBar(int currentHealth, int maxHealth)
+    {
+        if (healthSlider != null)
+        {
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = currentHealth;
+        }
+    }
     public void StartGame(string firstLevelName)
     {
         Time.timeScale = 1f;
