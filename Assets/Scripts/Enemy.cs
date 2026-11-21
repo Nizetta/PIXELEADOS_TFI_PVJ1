@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering.RenderGraphModule;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,6 +9,7 @@ public class Enemy : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 movement;
+    private bool enMovimiento;
     private Animator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,14 +26,25 @@ public class Enemy : MonoBehaviour
         if (distanceToPlayer <= radius)
         {
             Vector2 direction = (enemy.position - transform.position).normalized;
+            if (direction.x<0)
+            {
+                transform.localScale = new Vector3(5, 5, 5);
+            }
+            else if (direction.x>0)
+            {
+                transform.localScale = new Vector3(-5, 5, 5);
+            }
             movement =new Vector2(direction.x, 0);
+            enMovimiento = true;
         }
         else
         {
             movement = Vector2.zero;
+            enMovimiento = false;
         }
 
         rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
+        animator.SetBool("enMovimiento", enMovimiento);
     }
 
     void OnDrawGizmosSelected()
