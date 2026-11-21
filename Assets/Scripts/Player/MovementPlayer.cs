@@ -5,17 +5,15 @@ public class MovementPlayer : MonoBehaviour
     [Header("Player Data")]
     [SerializeField] private PlayerStats playerStats;
 
-    [Header("Raycast")]
-    [SerializeField] private float distanciaRaycast = 0.1f;
+    [Header("Ground Check")]
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float groundCheckHeight = 0.05f;
     private Rigidbody2D rb;
     private Collider2D col;
     private Animator animator;
 
     private float movimientoHorizontal;
     private bool isGrounded;
-    private bool atacando ;
-    
 
     private void Awake()
     {
@@ -33,7 +31,7 @@ public class MovementPlayer : MonoBehaviour
             Debug.LogWarning("No se encontró Animator en el personaje. La animación no se actualizará.");
         }
     }
-    void Start()
+    private void Start()
     {
         if (playerStats == null)
         {
@@ -47,7 +45,7 @@ public class MovementPlayer : MonoBehaviour
             Debug.LogWarning("Ground Layer sin asignar: el jugador no detectará el suelo.");
         }
     }
-    void Update()
+    private void Update()
     {
         movimientoHorizontal = Input.GetAxisRaw("Horizontal");
         CheckGround();
@@ -56,6 +54,7 @@ public class MovementPlayer : MonoBehaviour
         if (animator != null)
         {
             animator.SetFloat("horizontal", Mathf.Abs(movimientoHorizontal));
+            animator.SetBool("suelo", isGrounded);
         }
 
         if (rb == null)
@@ -64,11 +63,6 @@ public class MovementPlayer : MonoBehaviour
         Vector2 velocity = rb.linearVelocity;
         velocity.x = movimientoHorizontal * playerStats.MovementSpeed;
         rb.linearVelocity = velocity;
-
-        if (animator != null)
-        {
-            animator.SetBool("suelo", isGrounded);
-        }
 
         if (Input.GetButtonDown("Jump") && isGrounded )
         {
@@ -79,25 +73,22 @@ public class MovementPlayer : MonoBehaviour
 
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, playerStats.JumpForce);
         }
-        if (Input.GetKeyDown(KeyCode.J) )
-           Atacando();
-
-        animator.SetBool("ataque",atacando);
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            if (animator != null) animator.SetTrigger("ataque");
+        }
     }
 
     private void CheckGround()
     {
-        float offsetY = col != null ? col.bounds.extents.y + 0.02f : 0.5f;
-        Vector2 origen = (Vector2)transform.position + Vector2.down * offsetY;
-        int layerMask = groundLayer.value == 0 ? ~0 : groundLayer.value;
-        RaycastHit2D hit = Physics2D.Raycast(origen, Vector2.down, distanciaRaycast, layerMask);
-        isGrounded = hit.collider != null && hit.collider != col;
-        Color colorRay = isGrounded ? Color.green : Color.red;
-        Debug.DrawRay(origen, Vector2.down * distanciaRaycast, colorRay);
+        if (col == null) return;
+        Bounds b = col.bounds;
+        Vector2 center = new Vector2(b.center.x, b.min.y - groundCheckHeight * 0.5f);
+        Vector2 size = new Vector2(b.size.x * 0.9f, groundCheckHeight);
+        isGrounded = Physics2D.OverlapBox(center, size, 0f, groundLayer) != null;
         
     }
-    public void Atacando(){atacando=true;}
-    public void NoAtacando(){atacando=false;}
+ 
     private void CheckFlip()
     {
         if (movimientoHorizontal == 0)
@@ -113,14 +104,16 @@ public class MovementPlayer : MonoBehaviour
             transform.localScale = newScale;
         }
     }
-    void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
-        if (col != null)
-        {
-            float offsetY = col.bounds.extents.y + 0.02f;
-            Vector2 origen = (Vector2)transform.position + Vector2.down * offsetY;
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(origen, origen + Vector2.down * distanciaRaycast);
-        }
+        Collider2D c = col != null ? col : GetComponent<Collider2D>();
+        if (c == null) return;
+
+        Bounds b = c.bounds;
+        Vector3 center = new Vector3(b.center.x, b.min.y - groundCheckHeight * 0.5f, 0f);
+        Vector3 size = new Vector3(b.size.x * 0.9f, groundCheckHeight, 0f);
+
+        Gizmos.color = isGrounded ? Color.green : Color.red;
+        Gizmos.DrawWireCube(center, size);
     }
 }

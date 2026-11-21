@@ -460,7 +460,8 @@ MonoBehaviour:
   gameOverMusic: {fileID: 8300000, guid: b4ecf1635d5cb154eaa908c2778b06af, type: 3}
   clickClip: {fileID: 8300000, guid: 7724a3e7f6dc4a0418fa69ae5ae4f045, type: 3}
   potionClip: []
-  coinClip: []
+  coinClip:
+  - {fileID: 8300000, guid: 7724a3e7f6dc4a0418fa69ae5ae4f045, type: 3}
   hitClip: []
   playerHurtClip: []
   audioMixer: {fileID: 24100000, guid: 6de7f8e156012314eb152236c551b29c, type: 2}
@@ -1810,9 +1811,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
-    width: 1
-    height: 1
+    y: 0.0013531799
+    width: 0.99923843
+    height: 0.99594045
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
