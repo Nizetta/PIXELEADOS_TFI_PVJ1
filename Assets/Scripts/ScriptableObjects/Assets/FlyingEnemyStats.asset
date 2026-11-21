@@ -18,7 +18,7 @@ MonoBehaviour:
   amplitude: 2.5
   verticalBobAmplitude: 0.25
   verticalBobFrequency: 3
-  aimDirection: 0
+  aimDirection: 1
   shootInterval: 2
   initialDelay: 0.5
   projectileSpeed: 6

@@ -7,6 +7,8 @@ public class FlyingEnemyController : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private EnemyProjectile projectilePrefab;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Animator animator;
+    private static readonly int HashShoot = Animator.StringToHash("shoot");
 
     [Header("Fallback Movement & Shooting")]
     [SerializeField] private float fallbackFrequency = 2f;
@@ -38,6 +40,7 @@ public class FlyingEnemyController : MonoBehaviour
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
         initPosition = transform.position;
         shootTimer = InitialDelay;
+        if (animator == null) animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -111,6 +114,10 @@ public class FlyingEnemyController : MonoBehaviour
     private void ShootProjectile()
     {
         if (projectilePrefab == null) return;
+        if (animator != null)
+        {
+            animator.SetTrigger(HashShoot);
+        }
 
         Vector3 spawnPos = firePoint != null ? firePoint.position : transform.position;
         Vector2 dir = AimDirection == ProjectileAimDirection.Down
