@@ -18,11 +18,17 @@ public class DamageSpike : MonoBehaviour
     {
         if ((targetLayer.value & (1 << other.gameObject.layer)) == 0) return;
 
-        Inmune inmune = other.GetComponentInParent<Inmune>();
-        if (inmune == null) return;
+        HealthSystem health = other.GetComponentInParent<HealthSystem>();
+        if (health == null) return;
 
-        if (inmune.TryTakeDamage(damage))
+        int previousHealth = health.CurrentHealth;
+
+        health.TakeDamage(damage);
+
+        if (health.CurrentHealth < previousHealth)
+        {
             Debug.Log($"Spike: el jugador recibió {damage} de daño.");
+        }
     }
 
 }

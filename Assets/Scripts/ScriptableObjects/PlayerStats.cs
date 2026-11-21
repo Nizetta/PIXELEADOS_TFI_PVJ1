@@ -1,44 +1,55 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerStats", menuName = "Stats/PlayerStats")]
 public class PlayerStats : ScriptableObject
 {
-    [Header("Stats")]
-    [SerializeField] private int maxHealth = 100;
-    [SerializeField] private int currentHealth;
+    [Header("Base Stats")]
+    [Min(1)][SerializeField] private int baseMaxHealth = 100;
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private float jumpForce = 7.5f;
-    [SerializeField] private int currentScore = 0;
+
+    [Header("Shop Upgrades")]
+    [SerializeField] private int bonusMaxHealth = 0;
+    [SerializeField] private float bonusMovementSpeed = 0f;
+    [SerializeField] private bool hasSecondaryUpgrade = false;
+    [Header("Checkpoint")]
     [SerializeField] private Vector2 checkpoint;
 
-    public int MaxHealth => maxHealth;
-    public int CurrentHealth => currentHealth;
-    public int CurrentScore => currentScore;
-    public float MovementSpeed => movementSpeed;
+    public int MaxHealth => Mathf.Max(1, baseMaxHealth + bonusMaxHealth);
+    public float MovementSpeed => Mathf.Max(0.1f, movementSpeed + bonusMovementSpeed);
     public float JumpForce => jumpForce;
+    public bool HasSecondaryUpgrade => hasSecondaryUpgrade;
     public Vector2 Checkpoint
     {
         get { return checkpoint; }
         set { checkpoint = value; }
     }
-    public void ResetStats()
+    public event Action OnUpgradesChanged;
+    public void AddMaxHealthBonus(int amount)
     {
-        currentHealth = maxHealth;
-        currentScore = 0;
+        if (amount <= 0) return;
+        bonusMaxHealth += amount;
+        OnUpgradesChanged?.Invoke();
     }
-    public bool TakeDamage(int amount)
+    public void AddMovementSpeedBonus(float amount)
     {
-        if (currentHealth <= 0) return false;
-        currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
-        return true;
+        if (amount <= 0f) return;
+        bonusMovementSpeed += amount;
+        OnUpgradesChanged?.Invoke();
     }
-    public void Heal(int amount)
+    public void UnlockSecondaryUpgrade()
     {
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        if (hasSecondaryUpgrade) return;
+        hasSecondaryUpgrade = true;
+        OnUpgradesChanged?.Invoke();
     }
-    public void AddScore(int amount)
+    public void ResetUpgrades()
     {
-        currentScore += amount;
+        bonusMaxHealth = 0;
+        bonusMovementSpeed = 0f;
+        hasSecondaryUpgrade = false;
+        OnUpgradesChanged?.Invoke();
     }
 
 }

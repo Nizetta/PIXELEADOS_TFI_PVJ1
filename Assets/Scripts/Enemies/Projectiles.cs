@@ -23,11 +23,11 @@ public class Projectiles : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player"))return;
-        Inmune immunity = collision.GetComponent<Inmune>();
+        HealthSystem health = collision.GetComponentInParent<HealthSystem>();
 
-        if (immunity != null)
+        if (health != null)
         {
-            immunity.TryTakeDamage(damage);
+            health.TakeDamage(damage);
         }
         Destroy(gameObject);
     }

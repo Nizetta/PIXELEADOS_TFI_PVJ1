@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    public enum EnemyType{Mushroom,Mosquito,Bat}
+    public enum EnemyType { Mushroom, Mosquito, Bat }
 
     [Header("Enemy Type")]
     [SerializeField] private EnemyType enemyType;
@@ -47,7 +47,7 @@ public class EnemyAI : MonoBehaviour
     private bool movingRight = false;
     private float initialY;
     private bool isAwake = true;
-private bool isWakingUp;
+    private bool isWakingUp;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -71,7 +71,7 @@ private bool isWakingUp;
         isAwake = true;
         isWakingUp = false;
     }
-private IEnumerator AttackBat()
+    private IEnumerator AttackBat()
     {
         isAttacking = true;
 
@@ -131,7 +131,7 @@ private IEnumerator AttackBat()
 
         float direction = movingRight ? 1f : -1f;
 
-        float movementSpeed = enemyData != null ? enemyData.MovementSpeed: speed;
+        float movementSpeed = enemyData != null ? enemyData.MovementSpeed : speed;
 
         rb.linearVelocity = new Vector2(direction * movementSpeed, rb.linearVelocity.y);
         if (!movingRight && rb.position.x <= leftPoint.position.x)
@@ -198,7 +198,7 @@ private IEnumerator AttackBat()
         bool playerDetected = player != null && enemyData != null && Vector2.Distance(transform.position, player.position) <= enemyData.DetectionRadius;
 
         if (playerDetected)
-        { 
+        {
             Vector2 direction = ((Vector2)player.position - rb.position).normalized;
 
             rb.MovePosition(rb.position + direction * movementSpeed * Time.fixedDeltaTime);
@@ -255,7 +255,7 @@ private IEnumerator AttackBat()
 
         yield return new WaitForSeconds(chargeDuration);
         if (animator != null) animator.Play("Mosquito_attack");
-        
+
         ShootProjectile();
 
         yield return new WaitForSeconds(attackDuration);
@@ -266,7 +266,7 @@ private IEnumerator AttackBat()
     }
     private void ShootProjectile()
     {
-        GameObject projectileObject = Instantiate(projectilePrefab,firePoint.position,Quaternion.identity);
+        GameObject projectileObject = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
 
         Projectiles projectile = projectileObject.GetComponent<Projectiles>();
 
@@ -277,9 +277,9 @@ private IEnumerator AttackBat()
         if (isDead || !collision.gameObject.CompareTag("Player")) return;
         if (enemyType == EnemyType.Mosquito)
         {
-            Inmune immunity = collision.gameObject.GetComponent<Inmune>();
+            HealthSystem health = collision.gameObject.GetComponent<HealthSystem>();
 
-            if (immunity != null && enemyData != null) immunity.TryTakeDamage(enemyData.Damage);
+            if (health != null && enemyData != null) health.TakeDamage(enemyData.Damage);
             return;
         }
         TryStompOrDamage(collision);
@@ -307,9 +307,9 @@ private IEnumerator AttackBat()
             return;
         }
 
-        Inmune immunity = collision.gameObject.GetComponent<Inmune>();
+        HealthSystem health = collision.gameObject.GetComponent<HealthSystem>();
 
-        if (immunity != null && enemyData != null) immunity.TryTakeDamage(enemyData.Damage);
+        if (health != null && enemyData != null) health.TakeDamage(enemyData.Damage);
     }
     private void Die()
     {

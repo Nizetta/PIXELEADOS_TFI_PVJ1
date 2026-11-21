@@ -4462,6 +4462,10 @@ MonoBehaviour:
   attackCooldown: 2
   chargeDuration: 0.6
   attackDuration: 0.4
+  startSleeping: 0
+  wakeUpDuration: 0.8
+  batAttackDuration: 0.6
+  batDeathDuration: 0.8
   deathAnimationName: Mushroom_die
 --- !u!1 &217144966
 GameObject:
@@ -6079,6 +6083,10 @@ MonoBehaviour:
   attackCooldown: 2
   chargeDuration: 0.6
   attackDuration: 0.4
+  startSleeping: 0
+  wakeUpDuration: 0.8
+  batAttackDuration: 0.6
+  batDeathDuration: 0.8
   deathAnimationName: Mushroom_die
 --- !u!1001 &262584652
 PrefabInstance:
@@ -39918,6 +39926,10 @@ MonoBehaviour:
   attackCooldown: 2
   chargeDuration: 0.6
   attackDuration: 0.4
+  startSleeping: 0
+  wakeUpDuration: 0.8
+  batAttackDuration: 0.6
+  batDeathDuration: 0.8
   deathAnimationName: Mushroom_die
 --- !u!1 &478554867
 GameObject:
@@ -50257,6 +50269,10 @@ MonoBehaviour:
   attackCooldown: 2
   chargeDuration: 0.6
   attackDuration: 0.4
+  startSleeping: 0
+  wakeUpDuration: 0.8
+  batAttackDuration: 0.6
+  batDeathDuration: 0.8
   deathAnimationName: Mushroom_die
 --- !u!1001 &1097342306
 PrefabInstance:
@@ -50478,6 +50494,10 @@ MonoBehaviour:
   attackCooldown: 2
   chargeDuration: 0.6
   attackDuration: 0.4
+  startSleeping: 0
+  wakeUpDuration: 0.8
+  batAttackDuration: 0.6
+  batDeathDuration: 0.8
   deathAnimationName: Mosquito_die
 --- !u!95 &1103798426
 Animator:
@@ -50933,7 +50953,7 @@ GameObject:
   - component: {fileID: 1111158424}
   - component: {fileID: 1111158423}
   - component: {fileID: 1111158422}
-  - component: {fileID: 1111158428}
+  - component: {fileID: 1111158429}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -51128,7 +51148,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1111158428
+--- !u!114 &1111158429
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51137,13 +51157,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1111158421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b682c2415589464fbc4dd8c89cb2082, type: 3}
+  m_Script: {fileID: 11500000, guid: e937d488380c3a247b481b20148e8478, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Inmune
+  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   playerStats: {fileID: 11400000, guid: 1926bc20dd9bed845930b5d62b23441a, type: 2}
+  maxHealth: 100
+  invulnerabilityDuration: 0.5
   spriteRenderer: {fileID: 0}
   blinkInterval: 0.1
-  immunityDuration: 1
+  blinkAlpha: 0.25
 --- !u!1 &1117846318
 GameObject:
   m_ObjectHideFlags: 0
@@ -52567,6 +52589,10 @@ MonoBehaviour:
   attackCooldown: 2
   chargeDuration: 0.6
   attackDuration: 0.4
+  startSleeping: 0
+  wakeUpDuration: 0.8
+  batAttackDuration: 0.6
+  batDeathDuration: 0.8
   deathAnimationName: Mushroom_die
 --- !u!1001 &1175850192
 PrefabInstance:
@@ -141661,6 +141687,10 @@ MonoBehaviour:
   attackCooldown: 2
   chargeDuration: 0.6
   attackDuration: 0.4
+  startSleeping: 0
+  wakeUpDuration: 0.8
+  batAttackDuration: 0.6
+  batDeathDuration: 0.8
   deathAnimationName: Mushroom_die
 --- !u!1001 &1445641983
 PrefabInstance:
@@ -143206,6 +143236,10 @@ MonoBehaviour:
   attackCooldown: 2
   chargeDuration: 0.6
   attackDuration: 0.4
+  startSleeping: 0
+  wakeUpDuration: 0.8
+  batAttackDuration: 0.6
+  batDeathDuration: 0.8
   deathAnimationName: Mosquito_die
 --- !u!1 &1519343451
 GameObject:

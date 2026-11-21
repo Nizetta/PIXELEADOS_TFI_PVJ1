@@ -51,14 +51,6 @@ public class UIManager : MonoBehaviour
     private Resolution[] resolutions;
     private Button[] sceneButtons;
 
-    private void Awake()
-    {
-        if (autoHookButtonSounds)
-        {
-            sceneButtons = GetComponentsInChildren<Button>(true);
-        }
-    }
-
     private void OnEnable()
     {
         SubscribeToGameManager();
@@ -78,8 +70,13 @@ public class UIManager : MonoBehaviour
         {
             UpdateScoreHUD(GameManager.Instance.Score);
             UpdateGemsCountHUD();
+
             HandleStateChanged(GameManager.Instance.State);
-            UpdateHealthBar(GameManager.Instance.CurrentHealth,GameManager.Instance.MaxHealth);
+
+            HandleHealthChanged(
+                GameManager.Instance.CurrentHealth,
+                GameManager.Instance.MaxHealth
+            );
         }
 
         /*if  (healthSystemPlayer != null)
@@ -102,11 +99,11 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.OnScoreChanged -= UpdateScoreHUD;
         GameManager.Instance.OnScoreChanged += UpdateScoreHUD;
 
-        GameManager.Instance.OnItemCollected -= UpdateGemsHUD;
-        GameManager.Instance.OnItemCollected += UpdateGemsHUD;
+        GameManager.Instance.OnHealthChanged -= HandleHealthChanged;
+        GameManager.Instance.OnHealthChanged += HandleHealthChanged;
 
-        GameManager.Instance.OnHealthChanged -= UpdateHealthBar;
-        GameManager.Instance.OnHealthChanged += UpdateHealthBar;
+        GameManager.Instance.OnItemCollected -= HandleItemCollected;
+        GameManager.Instance.OnItemCollected += HandleItemCollected;
     }
 
     private void UnsubscribeFromGameManager()
@@ -115,8 +112,8 @@ public class UIManager : MonoBehaviour
 
         GameManager.Instance.OnStateChanged -= HandleStateChanged;
         GameManager.Instance.OnScoreChanged -= UpdateScoreHUD;
-        GameManager.Instance.OnItemCollected -= UpdateGemsHUD;
-        GameManager.Instance.OnHealthChanged -= UpdateHealthBar;
+        GameManager.Instance.OnHealthChanged -= HandleHealthChanged;
+        GameManager.Instance.OnItemCollected -= HandleItemCollected;
     }
 
     private void HookButtonSounds()
@@ -124,9 +121,7 @@ public class UIManager : MonoBehaviour
         if (!autoHookButtonSounds) return;
 
         Canvas parentCanvas = GetComponentInParent<Canvas>();
-        sceneButtons = parentCanvas != null
-            ? parentCanvas.GetComponentsInChildren<Button>(true)
-            : GetComponentsInChildren<Button>(true);
+        sceneButtons = parentCanvas != null ? parentCanvas.GetComponentsInChildren<Button>(true) : GetComponentsInChildren<Button>(true);
 
         foreach (Button btn in sceneButtons)
         {
@@ -135,7 +130,6 @@ public class UIManager : MonoBehaviour
             btn.onClick.AddListener(PlayButtonClickSound);
         }
     }
-
     private void UnhookButtonSounds()
     {
         if (sceneButtons == null) return;
@@ -147,31 +141,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void LoadSettings()
-    {
-        isLoadingSettings = true;
-
-        // Lee valores guardados
-        float masterVal = PlayerPrefs.GetFloat(MasterVolKey, 0.8f);
-        float musicVal = PlayerPrefs.GetFloat(MusicVolKey, 0.8f);
-        float sfxVal = PlayerPrefs.GetFloat(SfxVolKey, 0.8f);
-        int qualityIdx = PlayerPrefs.GetInt(QualityKey, QualitySettings.GetQualityLevel());
-        
-        // Aplicar al sistema (AudioMixer / QualitySettings)
-        SetMasterVolume(masterVal);
-        SetMusicVolume(musicVal);
-        SetSFXVolume(sfxVal);
-        SetQuality(qualityIdx);
-
-        // Sincronizar sliders y dropdown sin re-guardar mientras cargamos
-        if (masterSlider != null) masterSlider.SetValueWithoutNotify(masterVal);
-        if (musicSlider != null) musicSlider.SetValueWithoutNotify(musicVal);
-        if (sfxSlider != null) sfxSlider.SetValueWithoutNotify(sfxVal);
-        if (qualityDropdown != null) qualityDropdown.SetValueWithoutNotify(qualityIdx);
-
-        isLoadingSettings = false;
-    }
-
     private void PlayButtonClickSound()
     {
         if (AudioManager.Instance != null)
@@ -180,65 +149,21 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void HandleStateChanged(GameState newState)
-    {
-        CloseAllPanels();
-
-        switch (newState)
-        {
-            case GameState.Start:
-                if (mainMenuPanel) mainMenuPanel.SetActive(true);
-                LockCursor(false);
-                break;
-
-            case GameState.Playing:
-                LockCursor(false);
-                break;
-
-            case GameState.Paused:
-                if (pausePanel) pausePanel.SetActive(true);
-                LockCursor(false);
-                break;
-
-            case GameState.Victory:
-                if (victoryPanel) victoryPanel.SetActive(true);
-                UpdateEndScoreText(victoryScoreText);
-                LockCursor(false);
-                break;
-
-            case GameState.GameOver:
-                if (gameOverPanel) gameOverPanel.SetActive(true);
-                UpdateEndScoreText(gameOverScoreText);
-                LockCursor(false);
-                break;
-        }
-    }
-
-    private void LockCursor(bool isLocked)
-    {
-        Cursor.lockState = isLocked ? CursorLockMode.Locked : CursorLockMode.None;
-        Cursor.visible = !isLocked;
-    }
+    // ---------------- HUD ----------------
 
     private void UpdateScoreHUD(int currentScore)
     {
-        if (scoreText != null && GameManager.Instance != null)
+        if (scoreText != null)
         {
             scoreText.text = $"{currentScore}";
         }
     }
 
-    private void UpdateEndScoreText(TextMeshProUGUI targetText)
-    {
-        if (targetText == null) return;
-
-        int finalScore = GameManager.Instance != null ? GameManager.Instance.Score : 0;
-        targetText.text = $"Puntaje final: {finalScore}";
-    }
-    private void UpdateGemsHUD(ItemData item)
+    private void HandleItemCollected(ItemData item)
     {
         UpdateGemsCountHUD();
     }
+
     private void UpdateGemsCountHUD()
     {
         if (gemsText != null && GameManager.Instance != null)
@@ -247,66 +172,153 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void UpdateHealthBar(int currentHealth, int maxHealth)
+    private void HandleHealthChanged(int currentHealth, int maxHealth)
+    {
+        float normalized = maxHealth > 0
+            ? Mathf.Clamp01((float)currentHealth / maxHealth)
+            : 0f;
+
+        UpdateHealthBar(normalized);
+    }
+
+    private void UpdateHealthBar(float healthNormalized)
     {
         if (healthSlider != null)
         {
-            healthSlider.maxValue = maxHealth;
-            healthSlider.value = currentHealth;
-        }
-    }
-    public void StartGame(string firstLevelName)
-    {
-        Time.timeScale = 1f;
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.StartNewGame(firstLevelName);
-        }
-        else
-        {
-            SceneManager.LoadScene(firstLevelName);
+            healthSlider.maxValue = 1f;
+            healthSlider.value = healthNormalized;
         }
     }
 
-    public void ChangeSceneByName(string sceneName)
+    private void UpdateEndScoreText(TextMeshProUGUI targetText)
     {
-        Time.timeScale = 1f;
-        if (GameManager.Instance != null)
+        if (targetText == null) return;
+
+        int finalScore = GameManager.Instance != null
+            ? GameManager.Instance.Score
+            : 0;
+
+        targetText.text = $"Puntaje final: {finalScore}";
+    }
+
+    // ---------------- GAME STATES ----------------
+
+    private void HandleStateChanged(GameState newState)
+    {
+        CloseAllPanels();
+
+        switch (newState)
         {
-            GameManager.Instance.StartNewGame(sceneName);
-        }
-        else
-        {
-            SceneManager.LoadScene(sceneName);
+            case GameState.Start:
+                if (mainMenuPanel != null)
+                    mainMenuPanel.SetActive(true);
+
+                LockCursor(false);
+                break;
+
+            case GameState.Playing:
+                LockCursor(false);
+                break;
+
+            case GameState.Paused:
+                if (pausePanel != null)
+                    pausePanel.SetActive(true);
+
+                LockCursor(false);
+                break;
+
+            case GameState.Victory:
+                if (victoryPanel != null)
+                    victoryPanel.SetActive(true);
+
+                UpdateEndScoreText(victoryScoreText);
+                LockCursor(false);
+                break;
+
+            case GameState.GameOver:
+                if (gameOverPanel != null)
+                    gameOverPanel.SetActive(true);
+
+                UpdateEndScoreText(gameOverScoreText);
+                LockCursor(false);
+                break;
         }
     }
+
+    private void LockCursor(bool isLocked)
+    {
+        Cursor.lockState = isLocked
+            ? CursorLockMode.Locked
+            : CursorLockMode.None;
+
+        Cursor.visible = !isLocked;
+    }
+
+    // ---------------- PANELS ----------------
 
     public void CloseAllPanels()
     {
-        foreach (var panel in AllPanels)
+        foreach (GameObject panel in AllPanels)
         {
             if (panel != null)
-            {
                 panel.SetActive(false);
-            }
         }
     }
 
     public void OpenPanel(GameObject panelToOpen)
     {
         CloseAllPanels();
+
         if (panelToOpen != null)
-        {
             panelToOpen.SetActive(true);
-        }
+    }
+
+    // ---------------- SETTINGS ----------------
+
+    public void LoadSettings()
+    {
+        isLoadingSettings = true;
+
+        float masterVal = PlayerPrefs.GetFloat(MasterVolKey, 0.8f);
+        float musicVal = PlayerPrefs.GetFloat(MusicVolKey, 0.8f);
+        float sfxVal = PlayerPrefs.GetFloat(SfxVolKey, 0.8f);
+
+        int qualityIdx = PlayerPrefs.GetInt(
+            QualityKey,
+            QualitySettings.GetQualityLevel()
+        );
+
+        SetMasterVolume(masterVal);
+        SetMusicVolume(musicVal);
+        SetSFXVolume(sfxVal);
+        SetQuality(qualityIdx);
+
+        if (masterSlider != null)
+            masterSlider.SetValueWithoutNotify(masterVal);
+
+        if (musicSlider != null)
+            musicSlider.SetValueWithoutNotify(musicVal);
+
+        if (sfxSlider != null)
+            sfxSlider.SetValueWithoutNotify(sfxVal);
+
+        if (qualityDropdown != null)
+            qualityDropdown.SetValueWithoutNotify(qualityIdx);
+
+        isLoadingSettings = false;
     }
 
     public void SetMasterVolume(float sliderValue)
     {
         if (mainAudioMixer != null)
         {
-            mainAudioMixer.SetFloat("MasterVolume", Mathf.Log10(sliderValue)*20);
+            float volume = sliderValue > 0f
+                ? Mathf.Log10(sliderValue) * 20f
+                : -80f;
+
+            mainAudioMixer.SetFloat("MasterVolume", volume);
         }
+
         if (!isLoadingSettings)
         {
             PlayerPrefs.SetFloat(MasterVolKey, sliderValue);
@@ -318,33 +330,48 @@ public class UIManager : MonoBehaviour
     {
         if (mainAudioMixer != null)
         {
-            mainAudioMixer.SetFloat("SFX", Mathf.Log10(sliderValue) * 20);
+            float volume = sliderValue > 0f
+                ? Mathf.Log10(sliderValue) * 20f
+                : -80f;
+
+            mainAudioMixer.SetFloat("SFX", volume);
         }
+
         if (!isLoadingSettings)
         {
             PlayerPrefs.SetFloat(SfxVolKey, sliderValue);
             PlayerPrefs.Save();
         }
-
     }
 
     public void SetMusicVolume(float sliderValue)
     {
         if (mainAudioMixer != null)
         {
-            mainAudioMixer.SetFloat("Music", Mathf.Log10(sliderValue) * 20);
+            float volume = sliderValue > 0f
+                ? Mathf.Log10(sliderValue) * 20f
+                : -80f;
+
+            mainAudioMixer.SetFloat("Music", volume);
         }
+
         if (!isLoadingSettings)
         {
             PlayerPrefs.SetFloat(MusicVolKey, sliderValue);
             PlayerPrefs.Save();
         }
-
     }
 
     public void SetQuality(int qualityIndex)
     {
+        qualityIndex = Mathf.Clamp(
+            qualityIndex,
+            0,
+            QualitySettings.names.Length - 1
+        );
+
         QualitySettings.SetQualityLevel(qualityIndex);
+
         if (!isLoadingSettings)
         {
             PlayerPrefs.SetInt(QualityKey, qualityIndex);
@@ -355,61 +382,34 @@ public class UIManager : MonoBehaviour
     public void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
-
     }
 
-    /*private void SetupResolutions()
-    {
-        if (resolutionDropdown == null) return;
+    // ---------------- GAME ACTIONS ----------------
 
-        resolutions = Screen.resolutions;
-        resolutionDropdown.ClearOptions();
-
-        List<string> options = new List<string>();
-        int currentResolutionIndex = 0;
-
-        for (int i = 0; i < resolutions.Length; i++)
-        {
-            string option = $"{resolutions[i].width} x {resolutions[i].height} @ {resolutions[i].refreshRateRatio.value:F0}Hz";
-            options.Add(option);
-
-            if (resolutions[i].width == Screen.currentResolution.width &&
-                resolutions[i].height == Screen.currentResolution.height)
-            {
-                currentResolutionIndex = i;
-            }
-        }
-
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
-    }
-
-    public void SetResolution(int resolutionIndex)
-    {
-        Resolution resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-    }*/
-
-    public void QuitGame()
+    public void StartGame(string firstLevelName)
     {
         Time.timeScale = 1f;
+
         if (GameManager.Instance != null)
-        {
-            GameManager.Instance.QuitGame();
-        }
+            GameManager.Instance.StartNewGame(firstLevelName);
         else
-        {
-            Application.Quit();
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#endif
-        }
+            SceneManager.LoadScene(firstLevelName);
+    }
+
+    public void ChangeSceneByName(string sceneName)
+    {
+        Time.timeScale = 1f;
+
+        if (GameManager.Instance != null)
+            GameManager.Instance.StartNewGame(sceneName);
+        else
+            SceneManager.LoadScene(sceneName);
     }
 
     public void ResumeGame()
     {
-        if (GameManager.Instance != null && GameManager.Instance.State == GameState.Paused)
+        if (GameManager.Instance != null &&
+            GameManager.Instance.State == GameState.Paused)
         {
             GameManager.Instance.Paused();
         }
@@ -418,26 +418,38 @@ public class UIManager : MonoBehaviour
     public void RestartLevel()
     {
         Time.timeScale = 1f;
+
         if (GameManager.Instance != null)
-        {
             GameManager.Instance.RestartCurrentLevel();
-        }
         else
-        {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
     }
 
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
+
+        if (GameManager.Instance != null)
+            GameManager.Instance.LoadMainMenu();
+        else
+            SceneManager.LoadScene("MainMenu");
+    }
+
+    public void QuitGame()
+    {
+        Time.timeScale = 1f;
+
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.LoadMainMenu();
+            GameManager.Instance.QuitGame();
         }
         else
         {
-            SceneManager.LoadScene("MainMenu");
+            Application.Quit();
+
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
         }
     }
 }

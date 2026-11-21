@@ -4,7 +4,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Transform enemy;
     [SerializeField] private float radius = 2f;
-    [SerializeField] private float speed= 4f;
+    [SerializeField] private float speed = 4f;
     [SerializeField] private EnemyData enemyData;
 
     private Rigidbody2D rb;
@@ -12,29 +12,32 @@ public class Enemy : MonoBehaviour
     private bool enMovimiento;
     private Animator animator;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        if (enemy == null) return;
+
         float distanceToPlayer = Vector2.Distance(transform.position, enemy.position);
+
         if (distanceToPlayer <= radius)
         {
             Vector2 direction = (enemy.position - transform.position).normalized;
-            if (direction.x<0)
+
+            if (direction.x < 0)
             {
                 transform.localScale = new Vector3(5, 5, 5);
             }
-            else if (direction.x>0)
+            else if (direction.x > 0)
             {
                 transform.localScale = new Vector3(-5, 5, 5);
             }
-            movement =new Vector2(direction.x, 0);
+
+            movement = new Vector2(direction.x, 0);
             enMovimiento = true;
         }
         else
@@ -44,10 +47,12 @@ public class Enemy : MonoBehaviour
         }
 
         rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
-        animator.SetBool("enMovimiento", enMovimiento);
+
+        if (animator != null)
+            animator.SetBool("enMovimiento", enMovimiento);
     }
 
-    void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radius);
@@ -71,11 +76,13 @@ public class Enemy : MonoBehaviour
 
     private void TryDamagePlayer(GameObject player)
     {
-        Inmune inmunidad = player.GetComponent<Inmune>();
-        if (inmunidad == null)
+        HealthSystem health = player.GetComponentInParent<HealthSystem>();
+
+        if (health == null)
             return;
 
         int damage = enemyData != null ? enemyData.Damage : 10;
-        inmunidad.TryTakeDamage(damage);
+
+        health.TakeDamage(damage);
     }
 }
