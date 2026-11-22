@@ -7,10 +7,10 @@ public class FlyingEnemyHealth : MonoBehaviour
     [SerializeField] private FlyingEnemyStats stats;
 
     [Header("Fallback Settings")]
-    [Min(1)][SerializeField] private int fallbackMaxHealth = 45;
-    [Min(0f)][SerializeField] private float fallbackDeathDestroyDelay = 0.5f;
+    [SerializeField] private int fallbackMaxHealth = 45;
+    [SerializeField] private float fallbackDeathDestroyDelay = 0.5f;
     [SerializeField] private Vector2 fallbackKnockbackForce = new Vector2(2.5f, 1.5f);
-    [Min(0f)][SerializeField] private float fallbackHurtFlashDuration = 0.15f;
+    [SerializeField] private float fallbackHurtFlashDuration = 0.15f;
 
     [Header("References")]
     [SerializeField] private SpriteRenderer spriteRenderer;

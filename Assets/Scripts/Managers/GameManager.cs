@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
     private readonly List<ItemData> levelStartItems = new List<ItemData>();
     private bool hasLevelData;
 
+    public PlayerStats Stats => playerStats;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -146,6 +148,7 @@ public class GameManager : MonoBehaviour
 
     private void BeginSession()
     {
+        playerStats?.ResetUpgrades();
         Score = 0;
         MaxHealth = playerStats != null ? playerStats.MaxHealth : 100;
         CurrentHealth = MaxHealth;
@@ -319,5 +322,49 @@ public class GameManager : MonoBehaviour
             }
         }
         return sceneTransition;
+    }
+
+    //Tienda
+
+    public bool HasEnoughScore(int amount)
+    {
+        return amount >= 0 && Score >= amount;
+    }
+
+    public bool TrySpendScore(int cost)
+    {
+        if (cost < 0 || Score < cost) return false;
+
+        Score -= cost;
+        OnScoreChanged?.Invoke(Score);
+        return true;
+    }
+
+    public void BuyHealthUpgrade(int cost, int bonusHealth)
+    {
+        if (playerStats == null || !TrySpendScore(cost)) return;
+
+        playerStats.AddMaxHealthBonus(bonusHealth);
+
+        int newMax = playerStats.MaxHealth;
+        // Recarga la vida al máximo y notifica a UIManager / HUD
+        ReportHealth(newMax, newMax);
+        SaveLevelStartData();
+    }
+
+    public void BuyAttackUpgrade(int cost, int bonusDamage)
+    {
+        if (playerStats == null || !TrySpendScore(cost)) return;
+
+        playerStats.AddAttackDamageBonus(bonusDamage);
+        SaveLevelStartData();
+    }
+
+    public void BuySpeedUpgrade(int cost, float bonusSpeed)
+    {
+        if (playerStats == null || !TrySpendScore(cost)) return;
+
+        playerStats.AddMovementSpeedBonus(bonusSpeed);
+        SaveLevelStartData();
     }
 }

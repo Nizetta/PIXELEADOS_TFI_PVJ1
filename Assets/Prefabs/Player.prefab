@@ -282,5 +282,5 @@ MonoBehaviour:
   climbSpeed: 3
   ladderLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   detectionRadius: 0.1
