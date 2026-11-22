@@ -25,6 +25,9 @@ public class MeleeEnemyController : MonoBehaviour
     [Header("Combat & Detection")]
     [SerializeField] private Transform attackOrigin;
     [SerializeField] private LayerMask playerLayer;
+    [Header("Stomp Settings")]
+    [SerializeField] private float stompBounceForce = 8f;
+    [SerializeField] private float stompTolerance = 0.2f;
 
     [Header("Fallback Settings (If Stats is not assigned)")]
     [SerializeField] private float fallbackMoveSpeed = 2.5f;
@@ -303,6 +306,30 @@ public class MeleeEnemyController : MonoBehaviour
             {
                 playerHealth.TakeDamage(AttackDamage);
             }
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (CurrentState == EnemyState.Dead) return;
+
+        HealthSystem playerHealth = collision.gameObject.GetComponent<HealthSystem>()
+            ?? collision.gameObject.GetComponentInParent<HealthSystem>();
+
+        if (playerHealth == null || playerHealth.IsDead) return;
+
+        Rigidbody2D playerRb = collision.rigidbody;
+        Collider2D playerCollider = collision.collider;
+        Collider2D enemyCollider = GetComponent<Collider2D>();
+
+        if (playerRb == null || playerCollider == null || enemyCollider == null) return;
+
+        bool isFalling = playerRb.linearVelocity.y <= 0f;
+        bool isAboveEnemy = playerCollider.bounds.min.y >= enemyCollider.bounds.max.y - stompTolerance;
+
+        if (isFalling && isAboveEnemy)
+        {
+            health.TakeDamage(health.CurrentHealth, playerHealth.transform);
+            playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, stompBounceForce);
         }
     }
 

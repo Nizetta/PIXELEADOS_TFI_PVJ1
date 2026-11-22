@@ -13,7 +13,6 @@ public enum GameState
 }
 public class GameManager : MonoBehaviour
 {
-    //static
     public static GameManager Instance { get; private set; }
 
     [Header("Game Data")]
@@ -32,18 +31,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string mainMenuSceneName = "MainMenu";
     [SerializeField] private string[] levelSceneName;
 
-    //-- Eventos para desacoplar ---
     public event Action<GameState> OnStateChanged;
     public event Action<int> OnScoreChanged;
     public event Action<int, int> OnHealthChanged;
     public event Action<int> OnPlayerDamaged;
     public event Action<ItemData> OnItemCollected;
-    private bool sessionStarted;
 
-    //--- Transicion con Fade entre niveles ---
+    private bool sessionStarted;
     private SceneTransition sceneTransition;
 
-    //--Datos al inicio de cada nivel --
     private int levelStartScore;
     private int levelStartHealth;
     private int levelStartMaxHealth;
@@ -57,6 +53,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
@@ -64,41 +61,41 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         SceneManager.sceneLoaded += HandleSceneLoaded;
-
     }
+
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= HandleSceneLoaded;
     }
+
     private void Start()
     {
         ApplySceneState(SceneManager.GetActiveScene());
     }
+
     private void Update()
     {
         HandleInput();
     }
+
     private void HandleInput()
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
             if (State == GameState.Playing || State == GameState.Paused)
-            {
                 Paused();
-            }
         }
     }
-    // ---------- ESTADO SEGÚN LA ESCENA ----------
+
     private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         sceneTransition = null;
         ApplySceneState(scene);
     }
+
     private void ApplySceneState(Scene scene)
     {
-        string sceneName = scene.name;
-
-        if (sceneName == mainMenuSceneName)
+        if (scene.name == mainMenuSceneName)
         {
             hasLevelData = false;
             SetState(GameState.Start);
@@ -106,16 +103,19 @@ public class GameManager : MonoBehaviour
         else
         {
             if (!sessionStarted) BeginSession();
+
             SetState(GameState.Playing);
             SaveLevelStartData();
             Debug.Log($"State actual: {State}");
         }
     }
+
     private void SaveLevelStartData()
     {
         levelStartScore = Score;
         levelStartHealth = CurrentHealth;
         levelStartMaxHealth = MaxHealth;
+
         levelStartItems.Clear();
         levelStartItems.AddRange(items);
 
@@ -125,53 +125,57 @@ public class GameManager : MonoBehaviour
     private void SetState(GameState newState)
     {
         if (State == newState) return;
-        State = newState;
 
+        State = newState;
         Time.timeScale = (State == GameState.Paused || State == GameState.Victory || State == GameState.GameOver) ? 0f : 1f;
 
         Debug.Log($"[GameManager] Nuevo estado: {State}");
         OnStateChanged?.Invoke(State);
     }
+
     private void BeginSession()
     {
         Score = 0;
         MaxHealth = playerStats != null ? playerStats.MaxHealth : 100;
         CurrentHealth = MaxHealth;
+
         items.Clear();
         sessionStarted = true;
+
         OnScoreChanged?.Invoke(Score);
         OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
         OnItemCollected?.Invoke(null);
     }
+
     public void Paused()
     {
         if (State == GameState.Playing) SetState(GameState.Paused);
         else if (State == GameState.Paused) SetState(GameState.Playing);
     }
+
     public void StartNewGame(string firstLevelName)
     {
         BeginSession();
         StartCoroutine(FadeAndLoadScene(firstLevelName));
     }
+
     public void RestartCurrentLevel()
     {
         Time.timeScale = 1f;
-        if (hasLevelData)
-        {
-            RestoreLevelStartData();
-        }
-        else
-        {
-            BeginSession();
-        }
+
+        if (hasLevelData) RestoreLevelStartData();
+        else BeginSession();
+
         string currentScene = SceneManager.GetActiveScene().name;
         StartCoroutine(FadeAndLoadScene(currentScene));
     }
+
     private void RestoreLevelStartData()
     {
         Score = levelStartScore;
         MaxHealth = levelStartMaxHealth;
         CurrentHealth = levelStartHealth;
+
         items.Clear();
         items.AddRange(levelStartItems);
 
@@ -179,22 +183,24 @@ public class GameManager : MonoBehaviour
         OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
         OnItemCollected?.Invoke(null);
     }
+
     public void LoadMainMenu()
     {
         sessionStarted = false;
         Time.timeScale = 1f;
         StartCoroutine(FadeAndLoadScene(mainMenuSceneName));
     }
+
     public void QuitGame()
     {
         Debug.Log("Saliendo del juego");
         Application.Quit();
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
     }
 
-    // Pasa al siguiente nivel conservando puntaje, vida e ítems; si era el último, gana.
     public void CompleteLevel()
     {
         if (State != GameState.Playing) return;
@@ -212,21 +218,25 @@ public class GameManager : MonoBehaviour
             Win();
         }
     }
+
     public void Win()
     {
         if (State != GameState.Playing) return;
         SetState(GameState.Victory);
     }
+
     public void Lose()
     {
         if (State != GameState.Playing) return;
         SetState(GameState.GameOver);
     }
+
     public void NotifyPlayerDead()
     {
         Lose();
     }
-    // -- Datos del jugador e items --
+
+    // Suma puntos al puntaje total.
     public void AddScore(int points)
     {
         if (State != GameState.Playing) return;
@@ -234,38 +244,43 @@ public class GameManager : MonoBehaviour
         Score += points;
         OnScoreChanged?.Invoke(Score);
     }
+
+    // Registra una gema y suma sus puntos.
     public void CollectItem(ItemData item)
     {
         if (State != GameState.Playing || item == null) return;
 
         items.Add(item);
         Debug.Log("[GameManager] Ítem recolectado: " + item.ItemName);
+
         OnItemCollected?.Invoke(item);
         AddScore(item.ScoreValue);
     }
+
     public void ReportHealth(int current, int max)
     {
         CurrentHealth = current;
         MaxHealth = max;
         OnHealthChanged?.Invoke(current, max);
     }
+
     public void ReportDamage(int amount, int current, int max)
     {
         OnPlayerDamaged?.Invoke(amount);
         ReportHealth(current, max);
     }
+
     public int GetSessionHealth(int maxHealth)
     {
         return CurrentHealth > 0 ? Mathf.Min(CurrentHealth, maxHealth) : maxHealth;
     }
-
-    // -- Transición con Fade entre niveles --
 
     private void LoadScene(string sceneName)
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
     }
+
     private IEnumerator FadeAndLoadScene(string sceneName)
     {
         AudioManager.Instance?.FadeMusicOut();
@@ -274,20 +289,22 @@ public class GameManager : MonoBehaviour
         if (transition != null)
         {
             transition.FadeOut();
-            yield return GetSceneTransition().changeAlpha; // Espera a que termine el fade out
+            yield return transition.changeAlpha;
         }
+
         LoadScene(sceneName);
     }
+
     private SceneTransition GetSceneTransition()
     {
         if (sceneTransition == null)
         {
             sceneTransition = FindAnyObjectByType<SceneTransition>();
+
             if (sceneTransition == null)
-            {
                 Debug.LogWarning("[GameManager] No se encontró un SceneTransition en la escena.");
-            }
         }
+
         return sceneTransition;
     }
 }

@@ -37,6 +37,10 @@ public class BossEnemyStats : ScriptableObject
     [Header("Hit & Knockback")]
     [SerializeField] private Vector2 knockbackForce = new Vector2(1.5f, 1.0f);
     [Min(0f)][SerializeField] private float hurtDuration = 0.2f;
+    [Header("Rewards")]
+    [SerializeField] private int scoreValue = 500;
+
+    public int ScoreValue => scoreValue;
 
     public int MaxHealth => maxHealth;
     public float DeathDestroyDelay => deathDestroyDelay;

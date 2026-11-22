@@ -1,14 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerState
-{
-    Idle,
-    Run,
-    Jump,
-    Attack,
-    Hurt
-}
+public enum PlayerState {Idle, Run, Jump, Attack, Hurt}
 public class PlayerController : MonoBehaviour
 {
     [Header("Data & References")]
@@ -17,7 +10,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerClimb playerClimb;
 
     [Header("Ground Check")]
-    [SerializeField] private float groundRayDistance = 0.12f;
     [SerializeField] private LayerMask groundLayer;
 
     [Header("Combat / Attack")]
@@ -324,14 +316,17 @@ public class PlayerController : MonoBehaviour
 
     private void CheckGround()
     {
-        float offsetY = col != null ? col.bounds.extents.y + 0.02f : 0.5f;
-        Vector2 origin = (Vector2)transform.position + Vector2.down * offsetY;
-        int layerMask = groundLayer.value == 0 ? ~0 : groundLayer.value;
+        if (col == null) return;
 
-        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, groundRayDistance, layerMask);
-        IsGrounded = hit.collider != null && hit.collider != col;
+        Bounds bounds = col.bounds;
 
-        Debug.DrawRay(origin, Vector2.down * groundRayDistance, IsGrounded ? Color.green : Color.red);
+        Vector2 center = new Vector2(bounds.center.x, bounds.min.y - 0.01f);
+
+        Vector2 size = new Vector2(bounds.size.x * 0.85f, 0.08f);
+
+        IsGrounded = Physics2D.OverlapBox(center, size, 0f, groundLayer) != null;
+
+        Debug.DrawLine(center + Vector2.left * size.x / 2f, center + Vector2.right * size.x / 2f, IsGrounded ? Color.green : Color.red);
     }
 
     private void CheckFlip()
@@ -360,17 +355,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Collider2D c = col != null ? col : GetComponent<Collider2D>();
-        if (c != null)
-        {
-            float offsetY = c.bounds.extents.y + 0.02f;
-            Vector2 origin = (Vector2)transform.position + Vector2.down * offsetY;
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(origin, origin + Vector2.down * groundRayDistance);
-        }
+        Collider2D playerCollider = col != null ? col : GetComponent<Collider2D>();
+        if (playerCollider == null) return;
 
-        Vector2 atkOrigin = attackPoint != null ? (Vector2)attackPoint.position : (Vector2)transform.position;
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(atkOrigin, attackRadius);
+        Bounds bounds = playerCollider.bounds;
+
+        Vector2 center = new Vector2(bounds.center.x, bounds.min.y - 0.01f);
+        Vector2 size = new Vector2(bounds.size.x * 0.85f, 0.08f);
+
+        Gizmos.color = IsGrounded ? Color.green : Color.red;
+        Gizmos.DrawWireCube(center, size);
     }
+
 }

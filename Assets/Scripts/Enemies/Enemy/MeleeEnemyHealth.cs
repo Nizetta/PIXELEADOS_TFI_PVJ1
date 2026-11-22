@@ -1,16 +1,20 @@
 using System;
 using UnityEngine;
 
-public class BossEnemyHealth : MonoBehaviour
+public class MeleeEnemyHealth : MonoBehaviour
 {
     [Header("Stats")]
-    [SerializeField] private BossEnemyStats stats;
+    [SerializeField] private MeleeEnemyStats stats;
 
-    [Header("Fallback Settings")]
-    [Min(1)][SerializeField] private int fallbackMaxHealth = 200;
-    [Min(0f)][SerializeField] private float fallbackDeathDestroyDelay = 1.2f;
-    [SerializeField] private Vector2 fallbackKnockbackForce = new Vector2(1.5f, 1.0f);
-    [Min(0f)][SerializeField] private float fallbackHurtDuration = 0.2f;
+    [Header("Fallback Settings (If Stats is not assigned)")]
+    [SerializeField] private int fallbackMaxHealth = 60;
+    [SerializeField] private float fallbackDeathDestroyDelay = 0.8f;
+    [SerializeField] private Vector2 fallbackKnockbackForce = new Vector2(4f, 2.5f);
+    [SerializeField] private float fallbackHurtDuration = 0.25f;
+  
+    [Header("References")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private MeleeEnemyController enemyController;
 
     public int CurrentHealth { get; private set; }
     public bool IsDead => CurrentHealth <= 0;
@@ -19,15 +23,28 @@ public class BossEnemyHealth : MonoBehaviour
     public float DeathDestroyDelay => stats != null ? stats.DeathDestroyDelay : fallbackDeathDestroyDelay;
     public Vector2 KnockbackForce => stats != null ? stats.KnockbackForce : fallbackKnockbackForce;
     public float HurtDuration => stats != null ? stats.HurtDuration : fallbackHurtDuration;
+    public int ScoreValue => stats != null ? stats.ScoreValue : 100;
 
     public event Action<Transform> OnDamaged;
     public event Action OnDied;
 
     private Rigidbody2D rb;
+    private bool isDying;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
+
+        if (enemyController == null)
+        {
+            enemyController = GetComponent<MeleeEnemyController>();
+        }
+
         CurrentHealth = MaxHealth;
     }
 
@@ -68,6 +85,11 @@ public class BossEnemyHealth : MonoBehaviour
 
     private void Die()
     {
+        if (isDying) return;
+        isDying = true;
+
+        GameManager.Instance?.AddScore(ScoreValue);
+
         OnDied?.Invoke();
 
         if (rb != null)

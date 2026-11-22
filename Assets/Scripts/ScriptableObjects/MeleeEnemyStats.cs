@@ -24,6 +24,9 @@ public class MeleeEnemyStats : ScriptableObject
     [Header("Hit & Knockback")]
     [SerializeField] private Vector2 knockbackForce = new Vector2(4f, 2.5f);
     [Min(0f)][SerializeField] private float hurtDuration = 0.25f;
+    [Header("Rewards")]
+    [SerializeField] private int scoreValue = 40;
+    public int ScoreValue => scoreValue;
 
     // Propiedades de solo lectura para consumo seguro desde los scripts
     public int MaxHealth => maxHealth;

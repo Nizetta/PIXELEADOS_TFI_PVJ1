@@ -364,6 +364,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (14)
@@ -1333,6 +1337,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 294807726449056892, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 3673319246282665170, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 112.264084
@@ -1565,6 +1573,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (17)
@@ -4174,6 +4186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Respawn
   respawnPoint: {fileID: 83059001}
+  fallDamage: 10
 --- !u!61 &217144969
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7650,6 +7663,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (6)
@@ -38708,6 +38725,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 294807726449056892, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 3673319246282665170, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 56.50086
@@ -39262,12 +39283,48 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 348609648568580557, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_Name
+      value: ScoreText
+      objectReference: {fileID: 0}
     - target: {fileID: 1026539703516065636, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2479445521216531996, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2492577053433928123, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_Name
+      value: GemsText
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254379459954335625, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1426
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254379459954335625, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -137
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_isOrthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525381230016943220, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4641980994458476061, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
@@ -39366,19 +39423,119 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6695509175136642060, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_text
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7484092924164057073, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7818641454963559145, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_text
+      value: 'Score: 0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818641454963559145, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_fontSize
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818641454963559145, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7818641454963559145, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818641454963559145, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_isOrthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818641454963559145, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7818641454963559145, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818641454963559145, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213806579746891170, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 677
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213806579746891170, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 460
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584271724188523863, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: gemsIcon
+      value: 
+      objectReference: {fileID: 491391426}
+    - target: {fileID: 8584271724188523863, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: gemsText
+      value: 
+      objectReference: {fileID: 491391427}
+    - target: {fileID: 8584271724188523863, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 491391428}
     - target: {fileID: 8584271724188523863, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
       propertyPath: healthSystemPlayer
       value: 
       objectReference: {fileID: 1111158429}
+    - target: {fileID: 8898173712505496588, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 713
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898173712505496588, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 417
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6452661771937394885, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+    - {fileID: 8085859461575234076, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+    - {fileID: 6296596950032452413, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+--- !u!114 &491391426 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1641612221694137737, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+  m_PrefabInstance: {fileID: 491391425}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &491391427 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8458614583483380931, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+  m_PrefabInstance: {fileID: 491391425}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &491391428 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2503491944657892387, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+  m_PrefabInstance: {fileID: 491391425}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &492014812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40717,6 +40874,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 294807726449056892, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 3673319246282665170, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 61.303226
@@ -40935,6 +41096,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 294807726449056892, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 3673319246282665170, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 52.29691
@@ -41369,6 +41534,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (4)
@@ -44325,6 +44494,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (3)
@@ -44797,6 +44970,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (9)
@@ -46356,6 +46533,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 294807726449056892, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 3673319246282665170, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 64.55927
@@ -47812,6 +47993,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 294807726449056892, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 3673319246282665170, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 65.730995
@@ -48818,6 +49003,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (15)
@@ -49206,6 +49395,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 294807726449056892, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 3673319246282665170, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.14804
@@ -49454,6 +49647,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 294807726449056892, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 3673319246282665170, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.91254
@@ -51191,6 +51388,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (7)
@@ -51860,6 +52061,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 294807726449056892, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 3673319246282665170, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 75.16933
@@ -52393,6 +52598,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (5)
@@ -140715,6 +140924,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (12)
@@ -141096,6 +141309,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 294807726449056892, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 3673319246282665170, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 104.337746
@@ -142613,6 +142830,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (18)
@@ -143061,6 +143282,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 294807726449056892, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 3673319246282665170, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 42.61512
@@ -146903,6 +147128,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (2)
@@ -147490,6 +147719,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (16)
@@ -148081,6 +148314,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (8)
@@ -148143,6 +148380,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (10)
@@ -148205,6 +148446,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 294807726449056892, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 3673319246282665170, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 81.623474
@@ -149338,6 +149583,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (13)
@@ -149648,6 +149897,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (11)
@@ -150660,6 +150913,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: 'GreenCrystal '
@@ -151610,6 +151867,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: GreenCrystal  (1)
@@ -151850,6 +152111,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 294807726449056892, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 3673319246282665170, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 66.39413
@@ -152784,6 +153049,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 1242696515869830282, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 5701438782385469636, guid: c4fdf513108e35b4486e0f8fe31a1444, type: 3}
       propertyPath: m_Name
       value: 'GreenCrystal '
@@ -152955,6 +153224,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914306974}
     m_Modifications:
+    - target: {fileID: 294807726449056892, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3933b82626193a945853bce23ae85291, type: 2}
     - target: {fileID: 3673319246282665170, guid: 9369dd85c9fc9774eaba9fe5cf3414eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.53

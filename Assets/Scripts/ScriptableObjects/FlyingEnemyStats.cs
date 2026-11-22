@@ -10,7 +10,7 @@ public enum ProjectileAimDirection
 public class FlyingEnemyStats : ScriptableObject
 {
     [Header("Health & Death")]
-    [Min(1)][SerializeField] private int maxHealth = 45;
+    [Min(1)][SerializeField] private int maxHealth = 30;
     [Min(0f)][SerializeField] private float deathDestroyDelay = 0.5f;
 
     [Header("Flight / Oscillation Movement")]
@@ -30,6 +30,10 @@ public class FlyingEnemyStats : ScriptableObject
     [Header("Hit & Knockback")]
     [SerializeField] private Vector2 knockbackForce = new Vector2(2.5f, 1.5f);
     [Min(0f)][SerializeField] private float hurtFlashDuration = 0.15f;
+    [Header("Rewards")]
+    [SerializeField] private int scoreValue = 150;
+
+    public int ScoreValue => scoreValue;
 
     public int MaxHealth => maxHealth;
     public float DeathDestroyDelay => deathDestroyDelay;

@@ -1,20 +1,16 @@
 using System;
 using UnityEngine;
 
-public class MeleeEnemyHealth : MonoBehaviour
+public class BossEnemyHealth : MonoBehaviour
 {
     [Header("Stats")]
-    [SerializeField] private MeleeEnemyStats stats;
+    [SerializeField] private BossEnemyStats stats;
 
-    [Header("Fallback Settings (If Stats is not assigned)")]
-    [SerializeField] private int fallbackMaxHealth = 60;
-    [SerializeField] private float fallbackDeathDestroyDelay = 0.8f;
-    [SerializeField] private Vector2 fallbackKnockbackForce = new Vector2(4f, 2.5f);
-    [SerializeField] private float fallbackHurtDuration = 0.25f;
-  
-    [Header("References")]
-    [SerializeField] private Animator animator;
-    [SerializeField] private MeleeEnemyController enemyController;
+    [Header("Fallback Settings")]
+    [Min(1)][SerializeField] private int fallbackMaxHealth = 200;
+    [Min(0f)][SerializeField] private float fallbackDeathDestroyDelay = 1.2f;
+    [SerializeField] private Vector2 fallbackKnockbackForce = new Vector2(1.5f, 1.0f);
+    [Min(0f)][SerializeField] private float fallbackHurtDuration = 0.2f;
 
     public int CurrentHealth { get; private set; }
     public bool IsDead => CurrentHealth <= 0;
@@ -26,23 +22,13 @@ public class MeleeEnemyHealth : MonoBehaviour
 
     public event Action<Transform> OnDamaged;
     public event Action OnDied;
+    private bool isDying;
 
     private Rigidbody2D rb;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        if (animator == null)
-        {
-            animator = GetComponent<Animator>();
-        }
-
-        if (enemyController == null)
-        {
-            enemyController = GetComponent<MeleeEnemyController>();
-        }
-
         CurrentHealth = MaxHealth;
     }
 
@@ -83,18 +69,20 @@ public class MeleeEnemyHealth : MonoBehaviour
 
     private void Die()
     {
+        if (isDying) return;
+        isDying = true;
+
+        if (stats != null)
+            GameManager.Instance?.AddScore(stats.ScoreValue);
+
         OnDied?.Invoke();
 
         if (rb != null)
-        {
             rb.linearVelocity = Vector2.zero;
-        }
 
         Collider2D col = GetComponent<Collider2D>();
         if (col != null)
-        {
             col.enabled = false;
-        }
 
         Destroy(gameObject, DeathDestroyDelay);
     }

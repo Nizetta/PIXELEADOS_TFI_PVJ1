@@ -26,6 +26,7 @@ public class FlyingEnemyHealth : MonoBehaviour
 
     public event Action<Transform> OnDamaged;
     public event Action OnDied;
+    private bool isDying;
 
     private static readonly int HashHurt = Animator.StringToHash("hurt");
     private static readonly int HashDead = Animator.StringToHash("dead");
@@ -61,18 +62,20 @@ public class FlyingEnemyHealth : MonoBehaviour
 
     private void Die()
     {
+        if (isDying) return;
+        isDying = true;
+
+        if (stats != null)
+            GameManager.Instance?.AddScore(stats.ScoreValue);
+
         OnDied?.Invoke();
 
         if (animator != null)
-        {
             animator.SetTrigger(HashDead);
-        }
 
         Collider2D col = GetComponent<Collider2D>();
         if (col != null)
-        {
             col.enabled = false;
-        }
 
         Destroy(gameObject, DeathDestroyDelay);
     }

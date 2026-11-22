@@ -19,6 +19,11 @@ public class Gemas : MonoBehaviour
             Debug.LogError("GameManager no está disponible");
             return;
         }
+        if (itemData == null)
+        {
+            Debug.LogError("No se asignó ItemData a esta gema");
+            return;
+        }
         //GameManager.Instance.AddScore(1);
         GameManager.Instance.CollectItem(itemData);
         AudioManager.Instance.PlayCoin(transform, 1f);
