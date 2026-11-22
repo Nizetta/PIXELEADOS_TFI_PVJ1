@@ -1274,6 +1274,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8584271724188523863, guid: fc52fe188c802c54e9b75e3208882781, type: 3}
+      propertyPath: healthSystemPlayer
+      value: 
+      objectReference: {fileID: 1237453730}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5354,11 +5358,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3581668837466267670, guid: 071f8ed9ee4f52c4987396a800bbc91d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.89
+      value: 32.5
       objectReference: {fileID: 0}
     - target: {fileID: 3581668837466267670, guid: 071f8ed9ee4f52c4987396a800bbc91d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.27
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 3581668837466267670, guid: 071f8ed9ee4f52c4987396a800bbc91d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5401,6 +5405,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 071f8ed9ee4f52c4987396a800bbc91d, type: 3}
+--- !u!114 &1237453730 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1714951819934782946, guid: 071f8ed9ee4f52c4987396a800bbc91d, type: 3}
+  m_PrefabInstance: {fileID: 1237453729}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e937d488380c3a247b481b20148e8478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
 --- !u!1 &1252435010
 GameObject:
   m_ObjectHideFlags: 0

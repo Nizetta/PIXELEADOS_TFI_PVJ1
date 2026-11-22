@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -10,9 +12,11 @@ public class UIManager : MonoBehaviour
     private const string MasterVolKey = "MasterVolume";
     private const string MusicVolKey = "MusicVolume";
     private const string SfxVolKey = "SFXVolume";
-    private const string QualityKey = "QualityLevel";
+    private const string ResolutionKey = "ResolutionLevel";
 
     private bool isLoadingSettings;
+
+    [SerializeField] private ShopController shopController;
 
     [Header("Panels")]
     [SerializeField] private GameObject mainMenuPanel;   
@@ -28,11 +32,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
-    [SerializeField] private TMP_Dropdown qualityDropdown;
-    //[SerializeField] private TMP_Dropdown resolutionDropdown;
+    [SerializeField] private TMP_Dropdown resolutionDropdown;
 
     [Header("HUD Elements")]
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI itemsCountText; //Para la tienda
     [SerializeField] private Slider healthSlider;
     [SerializeField] private TextMeshProUGUI victoryScoreText;
     [SerializeField] private TextMeshProUGUI gameOverScoreText;
@@ -85,7 +89,7 @@ public class UIManager : MonoBehaviour
             healthSystemPlayer.OnChangeHealthPlayer += UpdateHealthBar;
         }*/
 
-        //SetupResolutions();
+        SetupResolutions();
         
         LoadSettings();
     }
@@ -135,7 +139,7 @@ public class UIManager : MonoBehaviour
         if (scoreText == null) return;
 
         int count = GameManager.Instance != null ? GameManager.Instance.Items.Count : 0;
-        scoreText.text = $"{count}";
+        itemsCountText.text = $"{count}";
     }
 
     private void HookButtonSounds()
@@ -174,19 +178,19 @@ public class UIManager : MonoBehaviour
         float masterVal = PlayerPrefs.GetFloat(MasterVolKey, 0.8f);
         float musicVal = PlayerPrefs.GetFloat(MusicVolKey, 0.8f);
         float sfxVal = PlayerPrefs.GetFloat(SfxVolKey, 0.8f);
-        int qualityIdx = PlayerPrefs.GetInt(QualityKey, QualitySettings.GetQualityLevel());
+        int resolutionIdx = PlayerPrefs.GetInt(ResolutionKey, 0);
         
-        // Aplicar al sistema (AudioMixer / QualitySettings)
+        // Aplicar al sistema
         SetMasterVolume(masterVal);
         SetMusicVolume(musicVal);
         SetSFXVolume(sfxVal);
-        SetQuality(qualityIdx);
+        SetResolution(resolutionIdx);
 
         // Sincronizar sliders y dropdown sin re-guardar mientras cargamos
         if (masterSlider != null) masterSlider.SetValueWithoutNotify(masterVal);
         if (musicSlider != null) musicSlider.SetValueWithoutNotify(musicVal);
         if (sfxSlider != null) sfxSlider.SetValueWithoutNotify(sfxVal);
-        if (qualityDropdown != null) qualityDropdown.SetValueWithoutNotify(qualityIdx);
+        if (resolutionDropdown != null) resolutionDropdown.SetValueWithoutNotify(resolutionIdx);
 
         isLoadingSettings = false;
     }
@@ -350,23 +354,13 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void SetQuality(int qualityIndex)
-    {
-        QualitySettings.SetQualityLevel(qualityIndex);
-        if (!isLoadingSettings)
-        {
-            PlayerPrefs.SetInt(QualityKey, qualityIndex);
-            PlayerPrefs.Save();
-        }
-    }
-
     public void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
 
     }
 
-    /*private void SetupResolutions()
+    private void SetupResolutions()
     {
         if (resolutionDropdown == null) return;
 
@@ -378,10 +372,10 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < resolutions.Length; i++)
         {
-            string option = $"{resolutions[i].width} x {resolutions[i].height} @ {resolutions[i].refreshRateRatio.value:F0}Hz";
+            string option = resolutions[i].width + " x " + resolutions[i].height;
             options.Add(option);
 
-            if (resolutions[i].width == Screen.currentResolution.width &&
+            if (Screen.fullScreen && resolutions[i].width == Screen.currentResolution.width &&
                 resolutions[i].height == Screen.currentResolution.height)
             {
                 currentResolutionIndex = i;
@@ -397,7 +391,12 @@ public class UIManager : MonoBehaviour
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-    }*/
+        if (!isLoadingSettings)
+        {
+            PlayerPrefs.SetInt(ResolutionKey, resolutionIndex);
+            PlayerPrefs.Save();
+        }
+    }
 
     public void QuitGame()
     {
@@ -446,6 +445,14 @@ public class UIManager : MonoBehaviour
         else
         {
             SceneManager.LoadScene("MainMenu");
+        }
+    }
+
+    public void ShopPanel()
+    {
+        if (shopController != null)
+        {
+            shopController.ToggleShopFromHUD();
         }
     }
 }

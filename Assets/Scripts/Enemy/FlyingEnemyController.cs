@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FlyingEnemyController : MonoBehaviour
 {
-    [Header("Stats & References")]
+    [Header("Stats")]
     [SerializeField] private FlyingEnemyStats stats;
     [SerializeField] private Transform firePoint;
     [SerializeField] private EnemyProjectile projectilePrefab;
@@ -16,8 +16,8 @@ public class FlyingEnemyController : MonoBehaviour
     [SerializeField] private float fallbackVerticalBobAmplitude = 0.25f;
     [SerializeField] private float fallbackVerticalBobFrequency = 3f;
     [SerializeField] private ProjectileAimDirection fallbackAimDirection = ProjectileAimDirection.Down;
-    [Min(0.05f)][SerializeField] private float fallbackShootInterval = 2.0f;
-    [Min(0f)][SerializeField] private float fallbackInitialDelay = 0.5f;
+    [SerializeField] private float fallbackShootInterval = 2.0f;
+    [SerializeField] private float fallbackInitialDelay = 0.5f;
 
     private FlyingEnemyHealth health;
     private Vector3 initPosition;
@@ -147,7 +147,7 @@ public class FlyingEnemyController : MonoBehaviour
 
     private void HandleDied()
     {
-        // Si querés que al morir caiga con gravedad o desaparezca directo, podés ajustar aquí
+        // Caida de monstruo
     }
 
     private void OnDrawGizmosSelected()

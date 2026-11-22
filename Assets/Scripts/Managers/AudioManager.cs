@@ -22,6 +22,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip[] coinClip;
     [SerializeField] private AudioClip[] hitClip;
     [SerializeField] private AudioClip[] playerHurtClip;
+    [SerializeField] private AudioClip[] buySuccessClip;
+    [SerializeField] private AudioClip[] buyDeniedClip;
 
     [Header("Volume Control Fade In-Out")]
     [SerializeField] private AudioMixer audioMixer;
@@ -201,4 +203,17 @@ public class AudioManager : MonoBehaviour
         audioMixer.SetFloat(musicParam, targetDb);
         changeMusicVolume = null;
     }
+
+    public void PlayBuySuccess(Transform spawnTransform = null, float volume = 1f)
+    {
+        Transform target = spawnTransform != null ? spawnTransform : transform;
+        PlayRandomSFX(buySuccessClip, target, volume);
+    }
+
+    public void PlayBuyDenied(Transform spawnTransform = null, float volume = 1f)
+    {
+        Transform target = spawnTransform != null ? spawnTransform : transform;
+        PlayRandomSFX(buyDeniedClip, target, volume);
+    }
+
 }

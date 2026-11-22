@@ -8,15 +8,18 @@ public class PlayerStats : ScriptableObject
     [Min(1)][SerializeField] private int baseMaxHealth = 100;
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private float jumpForce = 7.5f;
+    [Min(1)][SerializeField] private int baseAttackDamage = 10;
 
     [Header("Shop Upgrades")]
     [SerializeField] private int bonusMaxHealth = 0;
     [SerializeField] private float bonusMovementSpeed = 0f;
+    [SerializeField] private int bonusAttackDamage = 0;
     [SerializeField] private bool hasSecondaryUpgrade = false;
 
     public int MaxHealth => Mathf.Max(1, baseMaxHealth + bonusMaxHealth);
     public float MovementSpeed => Mathf.Max(0.1f, movementSpeed + bonusMovementSpeed);
     public float JumpForce => jumpForce;
+    public int AttackDamage => Mathf.Max(1, baseAttackDamage + bonusAttackDamage);
     public bool HasSecondaryUpgrade => hasSecondaryUpgrade;
 
     public event Action OnUpgradesChanged;
@@ -35,6 +38,13 @@ public class PlayerStats : ScriptableObject
         OnUpgradesChanged?.Invoke();
     }
 
+    public void AddAttackDamageBonus(int amount)
+    {
+        if (amount <= 0) return;
+        bonusAttackDamage += amount;
+        OnUpgradesChanged?.Invoke();
+    }
+
     public void UnlockSecondaryUpgrade()
     {
         if (hasSecondaryUpgrade) return;
@@ -46,6 +56,7 @@ public class PlayerStats : ScriptableObject
     {
         bonusMaxHealth = 0;
         bonusMovementSpeed = 0f;
+        bonusAttackDamage = 0;
         hasSecondaryUpgrade = false;
         OnUpgradesChanged?.Invoke();
     }

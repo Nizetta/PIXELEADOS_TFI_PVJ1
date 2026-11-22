@@ -1,8 +1,9 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class DamageSpike : MonoBehaviour
 {
-  /*  [SerializeField] private int damage = 10;
+    [SerializeField] private int damage = 10;
     [SerializeField] private LayerMask targetLayer;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -18,11 +19,13 @@ public class DamageSpike : MonoBehaviour
     {
         if ((targetLayer.value & (1 << other.gameObject.layer)) == 0) return;
 
-        Inmune inmune = other.GetComponentInParent<Inmune>();
-        if (inmune == null) return;
-
-        if (inmune.TryTakeDamage(damage))
+        HealthSystem playerHealth = other.GetComponent<HealthSystem>() ?? other.GetComponentInParent<HealthSystem>();
+        if (playerHealth != null && !playerHealth.IsDead)
+        {
+            playerHealth.TakeDamage(damage);
             Debug.Log($"Spike: el jugador recibió {damage} de daño.");
+        }
+
     }
-   */
+   
 }
